@@ -1,11 +1,14 @@
 import { Outlet } from "react-router-dom"
+import NavTop from "./Component/Navbar/NavTop"
+import NavDown from "./Component/Navbar/NavDown"
 
 function App() {
  
   return (
-    <div className="p-20">
-         This is the first page of my website.
-         <img src="logo.png" className="rounded-full border-gray-500 border-2 h-24 w-24" alt="" />
+    <div className="">
+        <NavTop> </NavTop>
+        <NavDown> </NavDown>
+        
          <Outlet> </Outlet>
     </div>
   )
