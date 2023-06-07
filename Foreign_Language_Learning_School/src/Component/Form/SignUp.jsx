@@ -20,13 +20,13 @@ const SignUp = () => {
   const email = data.email;
   const password = data.password;
   const photoURL = data.photoURL;
-  //console.log(name);
+  console.log(photoURL);
 
 
     signUpUser(email,password)
       .then((result) => {
         console.log(result.user);
-        updateUser(result.name, result.photoURL)
+        updateUser(name, photoURL)
         .then(() => {
           console.log("updated profile")
           reset();
@@ -89,8 +89,8 @@ const SignUp = () => {
 
 
         <label htmlFor="photoUrl" className="block text-gray-600 font-semibold mb-2 text-sm">Photo URL</label>
-        <input type="text" name="photoUrl" {...register("photoUrl", { required: true })} className="border-gray-400 border-2 p-2 rounded-md w-full focus:outline-none focus:border-blue-500" />
-        {errors.photoUrl && <span className="text-red-600">PhotoURL is required</span>}
+        <input type="text" name="photoURL" {...register("photoURL", { required: true })} className="border-gray-400 border-2 p-2 rounded-md w-full focus:outline-none focus:border-blue-500" />
+        {errors.photoURL && <span className="text-red-600">PhotoURL is required</span>}
       </div> 
 
 
