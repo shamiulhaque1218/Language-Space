@@ -6,9 +6,7 @@ const NavDown = () => {
 
   return (
     <>  
-    
-    
-     <div className="navbar bg-base-100">
+     <div className="navbar bg-base-100 pb-6 border-2">
     <div className="navbar-start">
       <div className="dropdown">
         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -26,7 +24,7 @@ const NavDown = () => {
           <li><a>Item 3</a></li>
         </ul>
       </div>
-      <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+     {/* divider */}
     </div>
     <div className="navbar-center hidden lg:flex">
       <ul className="menu menu-horizontal px-1">
@@ -42,9 +40,6 @@ const NavDown = () => {
         </li>
         <li><a>Item 3</a></li>
       </ul>
-    </div>
-    <div className="navbar-end">
-      <a className="btn">Button</a>
     </div>
   </div>
   </>

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 import React, { createContext, useEffect, useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth"
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "firebase/auth"
 import app from "../src/Component/firebase/firebase.config";
 
 
@@ -26,6 +26,11 @@ const AuthProvider = ({children}) => {
         setLoader(true);
         return signOut(auth);
     }
+    const updateUser = (name, photo) => {
+        return updateProfile(auth.currentUser, {
+         displayName: name, photoURL: photo
+        });
+    }
 
     useEffect(() => {
        const unsubscribe = onAuthStateChanged (auth, loggedUser => {
@@ -42,8 +47,10 @@ const AuthProvider = ({children}) => {
         loader,
         user,
         signUpUser,
+        updateUser,
         signInUser, 
         logOutUser,
+        
         
     };
   

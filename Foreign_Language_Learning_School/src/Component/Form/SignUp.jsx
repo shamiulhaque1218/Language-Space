@@ -4,20 +4,21 @@ import { Link } from "react-router-dom";
 import GoogleSign from "../Form/GoogleSign"
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const SignUp = () => {
-  const {signUpUser,logOutUser} = useContext(AuthContext);
+  const {signUpUser,logOutUser,updateUser} = useContext(AuthContext);
 
   const [success, setSuccess] = useState("");
   const [data, setData] = useState("");
- const { register, handleSubmit, formState: { errors } } = useForm();
+ const { register, handleSubmit, formState: { errors },reset } = useForm();
  const onSubmit = data =>  {
 
   setData(data);
   const name = data.name;
   const email = data.email;
-  const password = data.name;
+  const password = data.password;
   const photoURL = data.photoURL;
   //console.log(name);
 
@@ -25,7 +26,19 @@ const SignUp = () => {
     signUpUser(email,password)
       .then((result) => {
         console.log(result.user);
-        setSuccess("welcome ! Create User Successfully");
+        updateUser(result.name, result.photoURL)
+        .then(() => {
+          console.log("updated profile")
+          reset();
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'welcome! Create User Successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        })
+        setSuccess("welcome! Create User Successfully");
         logOutUser();
       })
       .catch((err) => {
@@ -35,17 +48,18 @@ const SignUp = () => {
 }
 
     return (
-        <div className="grid lg:grid-cols-2 grid-cols-1">
-             <div className="mt-40 ml-10">
+        <div className="grid lg:grid-cols-2 grid-cols-1 pb-10">
+
+             <div className="lg:mt-32 ml-44">
              <img  src="login.png" alt="image" />
              </div>
            
           <form
        onSubmit={handleSubmit(onSubmit)}
-        className="max-w-md mx-auto bg-white p-8 rounded-md shadow-md"
+        className="max-w-md mx-auto bg-white px-12 py-2 mt-10 rounded-md drop-shadow-xl"
       >
         <p className="text-2xl text-center m-5 font-semibold">
-          Find your Happiness {" "}
+        Lets you Speak better
         </p>
         <div className="mb-4">
           <label htmlFor="name"className="block text-gray-600 font-semibold mb-2 text-sm">
@@ -85,15 +99,15 @@ const SignUp = () => {
             Password (6 or more characters)
           </label>
           <input
-            type="password"
+            type="password"  
             name="password"
-            {...register("password", { required: true,minLength:6, maxLength: 8 },{ pattern: /^[A-Za-z]+$/i })}
+            {...register("password", { required: true,minLength:6, maxLength: 8, pattern: /(?=.*[A-Z])(?=.*[!@#$&+*])(?=.*[0-9])(?=.*[a-z])/ })}
             className="border-gray-600 border-2 p-1 rounded-md w-full focus:outline-none focus:border-blue-500"
           />
           {errors.password?.type === 'required' && <div className="text-red-600">Password is required</div>}
           {errors.password?.type === 'minLength' && <div className="text-red-600">Password is less than 6 characters</div>}
           {errors.password?.type === 'maxLength' && <div className="text-red-600">Password is more than 8 characters</div>}
-          {errors.password?.type === 'pattern' && <div className="text-red-600">please give a capital letter</div>}
+          {errors.password?.type === 'pattern' && <div className="text-red-600">please give a capital letter and a special character</div>}
          
           
         </div>

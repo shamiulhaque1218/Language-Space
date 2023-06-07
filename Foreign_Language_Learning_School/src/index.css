@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cantata+One&display=swap');
+
+@layer utilities {
+    .gFont{
+      font-family: 'Monsieur La Doulaise', cursive;
+    }
+    .gFont2{
+      font-family: 'Cantata One', serif;
+    }
+     
+  }
