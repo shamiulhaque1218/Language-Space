@@ -1,11 +1,41 @@
 /* eslint-disable no-unused-vars */
+import { useContext } from "react";
+import axios from "axios";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const AddClass = () => {
+    const {user} = useContext(AuthContext);
+    const email = user?.email
+    const name =user?.displayName
+    //console.log(email,name)
 
     const { register, handleSubmit, formState: { errors } } = useForm();
- const onSubmit = data =>  { console.log(data) }
+    const onSubmit = data =>  {
+    const className=data.name;
+    const classImage=data.pictureURL;
+    const availableSeats=data.AvailableSeats;
+    const price=data.price;
+     //console.log(data)
+     const ClassData = {className,classImage,name,email,availableSeats,price};
+     console.log(ClassData);
+
+     axios.post(`http://localhost:5000/class`, ClassData)
+    .then(data =>{
+        console.log(data)
+        if(data.data.insertedId) {
+            Swal.fire({
+                title: 'Toy Data',
+                text: 'Added User Successfully',
+                icon: 'success',
+                confirmButtonText: 'Done'
+              })
+        }
+    })
+
+     }
 
     return (
         <div>
@@ -16,7 +46,7 @@ const AddClass = () => {
             htmlFor="name"
             className="block mb-2 text-sm font-bold text-gray-700"
           >
-            Name:
+           Class Name:
           </label>
           <input
             type="text"
@@ -31,7 +61,7 @@ const AddClass = () => {
             htmlFor="pictureURL"
             className="block mb-2 text-sm font-bold text-gray-700"
           >
-            Picture URL:
+            Class Image:
           </label>
           <input
             type="text"
@@ -40,48 +70,47 @@ const AddClass = () => {
             className="w-full px-3 py-2 placeholder-gray-400 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-
-        <div className="mb-4 mx-10">
+        <div className="mb-4  mx-10">
           <label
-            htmlFor="sellerName"
+            htmlFor="InstructorName"
             className="block mb-2 text-sm font-bold text-gray-700"
           >
-            Seller Name:
+            Instructor name :
+          </label>
+         <input
+        type="text"
+        name="InstructorName"
+        value={name}
+        {...register('InstructorName')}
+        className="w-full px-3 py-2 placeholder-gray-400 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+
+        <div className="mb-4  mx-10">
+          <label
+            htmlFor="InstructorEmail"
+            className="block mb-2 text-sm font-bold text-gray-700"
+          >
+            Instructor email:
           </label>
           <input
-            type="text"
-            name="sellerName"
-            {...register("sellerName", { required: true })}
-            className="w-full px-3 py-2 placeholder-gray-400 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
+        type="text"
+        name="InstructorEmail"
+        value={email}
+        {...register('InstructorEmail')}
+        className="w-full px-3 py-2 placeholder-gray-400 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
         </div>
 
         <div className="mb-4 mx-10">
           <label
-            htmlFor="sellerEmail"
+            htmlFor="AvailableSeats"
             className="block mb-2 text-sm font-bold text-gray-700"
           >
-            Seller Email:
-          </label>
-          <input
-            type="email"
-            name="sellerEmail"
-            {...register("sellerEmail", { required: true })}
-            className="w-full px-3 py-2 placeholder-gray-400 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        <div className="mb-4 mx-10">
-          <label
-            htmlFor="subCategory"
-            className="block mb-2 text-sm font-bold text-gray-700"
-          >
-            Sub-category:
+            Available seats:
           </label>
           <input
             type="text"
-            name="subCategory"
-            {...register("subcategory", { required: true })}
+            name="AvailableSeats"
+            {...register("AvailableSeats", { required: true })}
             className="w-full px-3 py-2 placeholder-gray-400 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
@@ -101,41 +130,11 @@ const AddClass = () => {
           />
         </div>
 
-        <div className="mb-4 mx-10">
-          <label
-            htmlFor="rating"
-            className="block mb-2 text-sm font-bold text-gray-700"
-          >
-            Rating:
-          </label>
-          <input
-            type="text"
-            name="rating"
-            {...register("rating", { required: true })}
-            className="w-full px-3 py-2 placeholder-gray-400 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        <div className="mb-4 mx-10 ">
-          <label
-            htmlFor="quantity"
-            className="block mb-2 text-sm font-bold text-gray-700"
-          >
-            Available Quantity:
-          </label>
-          <input
-            type="text"
-            name="quantity"
-            {...register("quantity", { required: true })}
-            className="w-full px-3 py-2 placeholder-gray-400 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
         <button
           type="submit"
           className="mx-10 my-8 px-4 py-2 text-center font-bold text-white bg-blue-500 rounded-md hover:bg-blue-600"
         >
-          Submit
+          Add Class
         </button>
       </form>
     </div>   

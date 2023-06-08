@@ -6,7 +6,7 @@ import { Tooltip } from "react-tooltip";
 const NavTop = () => {
     
   const { user, logOutUser } = useContext(AuthContext);
-  //console.log(user?.photoURL)
+ // console.log(user?.photoURL)
   const handelLogOut = () => {
     logOutUser().then((res) => {
       console.log(res).catch((err) => {
