@@ -29,10 +29,13 @@ const Login = () => {
     } 
     
     return (
-        <div>
+        <div data-aos="fade-zoom-in"
+        data-aos-easing="ease-in-back"
+        data-aos-delay="100"
+        data-aos-offset="0">
             <form
         onSubmit={handleSubmit(onSubmit)}
-        className="lg:max-w-sm max-w-md mx-auto bg-white p-8 rounded-md shadow-md"
+        className="lg:max-w-sm max-w-md mx-auto bg-white p-8 rounded-md drop-shadow-xl my-5"
       >
         <p className="text-3xl text-black  font-semibold">Sign in</p>
         <small className="">Stay with us for strengthen your core</small>

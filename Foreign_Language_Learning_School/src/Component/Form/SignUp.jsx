@@ -50,14 +50,13 @@ const SignUp = () => {
     return (
         <div className="grid lg:grid-cols-2 grid-cols-1 pb-10">
 
-             <div className="lg:mt-32 ml-44">
+             <div className="lg:mt-32 ml-44" data-aos="zoom-out-right">
              <img  src="login.png" alt="image" />
              </div>
            
           <form
        onSubmit={handleSubmit(onSubmit)}
-        className="max-w-md mx-auto bg-white px-12 py-2 mt-10 rounded-md drop-shadow-xl"
-      >
+        className="max-w-md mx-auto bg-white px-12 py-2 mt-10 rounded-md drop-shadow-xl" data-aos="zoom-out-left">
         <p className="text-2xl text-center m-5 font-semibold">
         Lets you Speak better
         </p>
