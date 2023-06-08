@@ -9,6 +9,7 @@ import Cookie from "../Footer/Cookie";
 import Address from "../Footer/Address";
 import Contact from "../Footer/Contact";
 import AddClass from "../Classes/addClass";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
         },
         {
           path: "/addclass",
-          element: <AddClass />,
+          element: <PrivateRoute> <AddClass /> </PrivateRoute> ,
         },
         
       ],
