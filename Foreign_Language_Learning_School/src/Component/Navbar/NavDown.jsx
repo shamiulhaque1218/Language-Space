@@ -27,7 +27,7 @@ const NavDown = () => {
         </li>
         <li> <NavLink to="/login" className={({ isActive }) => isActive ? "text-blue-500" : "text-black" }>   Instructors  </NavLink> 
         </li>
-        <li> <NavLink to="/" className={({ isActive }) => isActive ? "text-blue-500" : "text-black" }>   Classes  </NavLink> 
+        <li> <NavLink to="/addclass" className={({ isActive }) => isActive ? "text-blue-500" : "text-black" }>   Classes  </NavLink> 
         </li>
         <li> {user &&
           <NavLink to="/" className={({ isActive }) => isActive ? "text-blue-500" : "text-black" }>  Dashboard  </NavLink> }

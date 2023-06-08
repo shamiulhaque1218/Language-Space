@@ -8,6 +8,7 @@ import Advertisement from "../Footer/Advertisement";
 import Cookie from "../Footer/Cookie";
 import Address from "../Footer/Address";
 import Contact from "../Footer/Contact";
+import AddClass from "../Classes/addClass";
 
 
 const router = createBrowserRouter([
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
         {
           path: "/advertisement",
           element: <Advertisement />,
+        },
+        {
+          path: "/addclass",
+          element: <AddClass />,
         },
         
       ],

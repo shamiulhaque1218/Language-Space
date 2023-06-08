@@ -54,7 +54,7 @@ const SignUp = () => {
              <img  src="login.png" alt="image" />
              </div>
            
-          <form
+    <form
        onSubmit={handleSubmit(onSubmit)}
         className="max-w-md mx-auto bg-white px-12 py-2 mt-10 rounded-md drop-shadow-xl" data-aos="zoom-out-left">
         <p className="text-2xl text-center m-5 font-semibold">

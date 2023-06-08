@@ -2,7 +2,7 @@ import Slider from "./Slider";
 
 const HomePage = () => {
     return (
-        <div className="pb-96">
+        <div className="pb-5">
            <Slider> </Slider>
         </div>
     );
