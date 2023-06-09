@@ -10,6 +10,8 @@ import Address from "../Footer/Address";
 import Contact from "../Footer/Contact";
 import AddClass from "../Classes/addClass";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import UpdateClass from "../Classes/UpdateClass";
+import ViewClass from "../Classes/ViewClass";
 
 
 const router = createBrowserRouter([
@@ -50,6 +52,15 @@ const router = createBrowserRouter([
         {
           path: "/addclass",
           element: <PrivateRoute> <AddClass /> </PrivateRoute> ,
+        },
+        {
+          path: "/update/:id",
+          element: <UpdateClass />,
+          loader: ({params}) => fetch(`http://localhost:5000/class/${params.id}`),
+        },
+        {
+          path: "/viewclass",
+          element: <PrivateRoute> <ViewClass /> </PrivateRoute>,
         },
         
       ],

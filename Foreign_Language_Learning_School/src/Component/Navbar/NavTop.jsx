@@ -30,6 +30,9 @@ const NavTop = () => {
              {user?.photoURL && <img className="h-12 w-12 rounded-full" src={user?.photoURL} alt="" />
              }
             </div>
+            <div>
+              <Link to="/viewclass"> <button>viewclass</button> </Link>
+            </div>
             <Tooltip id="my-tooltip" />
         </div>
         

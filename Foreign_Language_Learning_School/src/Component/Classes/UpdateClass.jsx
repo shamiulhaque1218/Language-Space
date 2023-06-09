@@ -1,16 +1,24 @@
 /* eslint-disable no-unused-vars */
-import { useContext } from "react";
-import axios from "axios";
-import { useForm } from "react-hook-form";
-import { AuthContext } from "../../../provider/AuthProvider";
-import Swal from "sweetalert2";
+import axios from 'axios';
+import React, { useContext } from 'react';
+import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../../../provider/AuthProvider';
+import { useLoaderData } from 'react-router-dom';
 
+const UpdateClass = () => {
 
-const AddClass = () => {
+    const update = useLoaderData();
+    const {_id,className,classImage,availableSeats,price} = update
+ //  console.log(update);
+     const clName = className;
+     const clImage = classImage;
+     const claAailableSeats = availableSeats;
+     const clPrice = price;
     const {user} = useContext(AuthContext);
     const email = user?.email
     const name =user?.displayName
-    //console.log(email,name)
+   // console.log(_id,className,classImage,availableSeats,price);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data =>  {
@@ -18,29 +26,35 @@ const AddClass = () => {
     const classImage=data.pictureURL;
     const availableSeats=data.AvailableSeats;
     const price=data.price;
-     //console.log(data)
      const ClassData = {className,classImage,name,email,availableSeats,price};
      console.log(ClassData);
 
-     axios.post(`http://localhost:5000/class`, ClassData)
+    fetch(`http://localhost:5000/class/${_id}`, {
+        method: 'PATCH',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(ClassData)
+    })
+    .then(res => res.json())
     .then(data =>{
         console.log(data)
-        if(data.data.insertedId) {
+        if(data.modifiedCount > 0) {
             Swal.fire({
-                title: 'New Class' ,
-                text: 'Added Class Successfully',
+                title: 'Class Updated',
+                text: 'Update class Successfully',
                 icon: 'success',
                 confirmButtonText: 'Done'
               })
         }
     })
+}
 
-     }
 
     return (
-       
+        <div>
             <div className="px-20 pb-20">
-              <p className="gFont2 text-3xl text-center py-5 px-10 font-semibold">Add a new class</p>
+              <p className="gFont2 text-3xl text-center py-5 px-10 font-semibold">Update Class</p>
       <form  onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-2">
         <div className="mb-4 mx-10">
           <label
@@ -52,7 +66,8 @@ const AddClass = () => {
           <input
             type="text"
             name="name"
-            {...register("name", { required: true })}
+            defaultValue={clName}
+            {...register("name")}
             className="w-full px-3 py-2 placeholder-gray-400 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
@@ -67,7 +82,8 @@ const AddClass = () => {
           <input
             type="text"
             name="pictureURL"
-            {...register("pictureURL", { required: true })}
+            defaultValue={clImage}
+            {...register("pictureURL")}
             className="w-full px-3 py-2 placeholder-gray-400 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
@@ -103,7 +119,7 @@ const AddClass = () => {
 
         <div className="mb-4 mx-10">
           <label
-            htmlFor="AvailableSeats"
+            htmlFor="AvailableSeat"
             className="block mb-2 text-sm font-bold text-gray-700"
           >
             Available seats:
@@ -111,7 +127,8 @@ const AddClass = () => {
           <input
             type="text"
             name="AvailableSeats"
-            {...register("AvailableSeats", { required: true })}
+            defaultValue={claAailableSeats}
+            {...register("AvailableSeats")}
             className="w-full px-3 py-2 placeholder-gray-400 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
@@ -126,7 +143,8 @@ const AddClass = () => {
           <input
             type="text"
             name="price"
-            {...register("price", { required: true })}
+            defaultValue={clPrice}
+            {...register("price")}
             className="w-full px-3 py-2 placeholder-gray-400 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
@@ -138,9 +156,9 @@ const AddClass = () => {
           Add Class
         </button>
       </form>
-             </div>   
-       
+             </div> 
+        </div>
     );
 };
 
-export default AddClass;
+export default UpdateClass;
