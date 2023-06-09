@@ -1,12 +1,17 @@
 /* eslint-disable no-unused-vars */
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
 import ContentLoader from "react-content-loader";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faComments, faPersonCircleCheck, faTrash, faUserAltSlash } from "@fortawesome/free-solid-svg-icons";
+import { faEdit } from "@fortawesome/free-regular-svg-icons";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const ViewClass = () => {
+  const {user} = useContext(AuthContext)
   const [axiosSecure] = useAxiosSecure();
 
   const {
@@ -34,6 +39,53 @@ const ViewClass = () => {
       </>
     );
   if (error) return "An error has occurred: " + error.message;
+
+  const handelAdd = (_id) => {
+    fetch(`http://localhost:5000/class/${_id}`, {
+        method: 'PATCH',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({status: 'approved'})
+    })
+    .then(res => res.json())
+    .then(data =>{
+        console.log(data)
+        refetch();
+        if(data.modifiedCount > 0) {
+            Swal.fire({
+                title: 'Class Updated',
+                text: 'Update class Successfully',
+                icon: 'success',
+                confirmButtonText: 'Done'
+              })
+        }
+    })
+  }
+  const handelReject = (_id) => {
+    fetch(`http://localhost:5000/class/${_id}`, {
+        method: 'PATCH',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({status: 'denied'})
+    })
+    .then(res => res.json())
+    .then(data =>{
+        console.log(data)
+        refetch();
+        if(data.modifiedCount > 0) {
+            Swal.fire({
+                title: 'Class Updated',
+                text: 'Update class Successfully',
+                icon: 'success',
+                confirmButtonText: 'Done'
+                
+              }) 
+        }
+    }) 
+  }
+  
   const handelDelete = (_id) => {
     Swal.fire({
         title: 'Are you sure?',
@@ -59,7 +111,7 @@ const ViewClass = () => {
             if(data.deletedCount > 0) {
                 Swal.fire(
                         'Deleted!',
-                        'Your Toy data has been deleted.',
+                        'Your class has been deleted.',
                         'success'
                       )
                       refetch();
@@ -78,44 +130,94 @@ const ViewClass = () => {
     <div>
       <table className="table table-compact w-full">
         <thead>
-          <tr>
+          <tr className="bg-black py-2 text-white gFont3">
             <th className="text-center">Class Image</th>
             <th className="text-center">Class Name</th>
             <th className="text-center">Instructor Name</th>
             <th className="text-center">Instructor Email</th>
             <th className="text-center">Available seats</th>
+            <th className="text-center">Enrolled Students</th>
+            <th className="text-center">Feedback</th>
             <th className="text-center">Price</th>
             <th className="text-center">Status</th>
-            <th className="text-center"> </th>
+           {
+            user && (
+              <th className="text-center">Action</th>
+            )
+           }
+            <th className="text-center">Action</th>
           </tr>
         </thead>
 
-        {tqData.map((data) => (
+        {tqData.map((data,index) => (
           <tbody key={data._id} className=" p-1">
-          <tr className="border-2 ">
-            <td>
-              <img className="h-12 w-12 ml-8" src={data.classImage} alt="" />{" "}
+          <tr className="border-2">
+            <td className="flex">
+              <p className="p-3 text-center">  {index+1} </p>
+              <img className="h-12 w-12 ml-8 rounded-xl" src={data.classImage} alt="" />
             </td>
             <td className="p-3 text-center">{data.className} </td>
             <td className="p-3 text-center">{data.name} </td>
             <td className="p-3 text-center">{data.email} </td>
             <td className="p-3 text-center">{data.availableSeats} </td>
+            <td className="p-3 text-center"> 0 </td>
+            <td className="p-3 text-center"> {data.feedback ? data.feedback : "No Feedback" } </td>
             <td className="p-3 text-center">{data.price} </td>
-            <td className="p-3 text-center"> status </td>
+            <td className="p-3 text-center"> {data.status ? data.status : "pending"} </td>
+            {
+              user && (
+                <td> 
+            <div>
+             
+                {
+                  data.status ? <button
+                  onClick={() => handelAdd(data._id)}
+                   className="btn px-3 py-3 bg-green-600 text-center space-x-1" disabled>
+                  <FontAwesomeIcon className='h-4 text-white' icon={faPersonCircleCheck} />
+                  </button> : <button
+                onClick={() => handelAdd(data._id)}
+                 className="btn px-3 py-3 bg-green-600 text-center space-x-1">
+                <FontAwesomeIcon className='h-4 text-white' icon={faPersonCircleCheck} />
+                </button>
+                }
+                {
+                  data.status ? <button
+                  onClick={() => handelReject(data._id)}
+                  className="btn px-3 py-3 bg-red-600 text-center" disabled>
+                <FontAwesomeIcon className='h-4 text-white' icon={faUserAltSlash} />
+                </button> :
+                <button
+                onClick={() => handelReject(data._id)}
+                className="btn px-3 py-3 bg-red-600 text-center">
+              <FontAwesomeIcon className='h-4 text-white' icon={faUserAltSlash} />
+              </button>
+                }
+              
+
+              <Link to={`/feedback/${data._id}`}>
+              <button
+                className="btn px-3 py-3 bg-orange-600 text-center">
+            <FontAwesomeIcon className='h-4 text-white' icon={faComments} />
+              </button>
+              </Link>
+            </div>
+            </td>
+              )
+            }
+            <td> 
             <div>
               <Link to={`/update/${data._id}`}>
-                {" "}
-                <button className="btn btn-active text-center space-x-1">
-                  Update
-                </button>{" "}
+                <button className="btn px-3 py-3 bg-green-600 text-center space-x-1">
+                <FontAwesomeIcon className='h-4 text-white' icon={faEdit} />
+                </button>
               </Link>
               <button
                 onClick={() => handelDelete(data._id)}
-                className="btn bg-red-600 text-center"
-              >
-                Delete
+                className="btn px-3 py-3 bg-red-600 text-center">
+            <FontAwesomeIcon className='h-4 text-white' icon={faTrash} />
               </button>
             </div>
+            </td>
           </tr>
         </tbody>
         ))}

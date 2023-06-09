@@ -7,7 +7,7 @@ import { AuthContext } from '../../../provider/AuthProvider';
 import { useLoaderData } from 'react-router-dom';
 
 const UpdateClass = () => {
-
+  
     const update = useLoaderData();
     const {_id,className,classImage,availableSeats,price} = update
  //  console.log(update);
@@ -26,8 +26,8 @@ const UpdateClass = () => {
     const classImage=data.pictureURL;
     const availableSeats=data.AvailableSeats;
     const price=data.price;
-     const ClassData = {className,classImage,name,email,availableSeats,price};
-     console.log(ClassData);
+    const ClassData = {className,classImage,name,email,availableSeats,price};
+    console.log(ClassData);
 
     fetch(`http://localhost:5000/class/${_id}`, {
         method: 'PATCH',
