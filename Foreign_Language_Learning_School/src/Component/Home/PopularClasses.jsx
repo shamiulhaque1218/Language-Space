@@ -15,7 +15,7 @@ const PopularClasses = () => {
   } = useQuery({
     queryFn: async () => {
       const data = await axiosSecure.get(`/class`);
-      console.log({ fromTq: data });
+      //console.log({ fromTq: data });
       return data?.data;
     },
     queryKey: ["users"],
@@ -29,10 +29,10 @@ const PopularClasses = () => {
   </ContentLoader>{" "}
 </>
   if (error) return "An error has occurred: " + error.message;
-  console.log(tqData);
+  //console.log(tqData);
 
   return (
-    <div className="grid grid-cols-3 gFont3 px-14">
+    <div className="grid lg:grid-cols-3 grid-cols-1 gFont3 lg:px-14 px-10">
       {tqData.map((res) => (
         <div key={res._id}>
           <div className="card shadow-gray-300 rounded-sm w-96 shadow-md px-2 mt-6 ml-2">
@@ -45,7 +45,7 @@ const PopularClasses = () => {
               
             </figure>
             <div className="card-body">
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-2 ">
               <p className="card-title">{res.className}</p>
               <p className="text-xl bgFont ml-20">$ {res.price}</p>
               </div>

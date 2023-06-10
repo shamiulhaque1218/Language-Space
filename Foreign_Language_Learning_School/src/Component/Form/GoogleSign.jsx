@@ -2,6 +2,8 @@
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../../Component/firebase/firebase.config";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 
 const GoogleSign = () => {
   const navigate = useNavigate();
@@ -10,7 +12,12 @@ const GoogleSign = () => {
   const handelGoogleSign = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        const user = result.user;
+        const User = {name:result.user.displayName , email:result.user.email, photoURL:result.user.photoURL, role: 'Student' }
+        console.log(User);
+         axios.post(`http://localhost:5000/user`, User)
+        .then(data =>{
+            console.log(data) 
+          })
        // console.log(user);
         navigate("/");
       })

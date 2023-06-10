@@ -27,7 +27,7 @@ const NavTop = () => {
             </div>
       
             <div className="mt-4 lg:mt-5 text-white lg:text-xl text-md">
-                {!user && ( <Link to="/signup">  Login
+                {!user && ( <Link to="/login">  Login
                 </Link>  )}
                 {user && (
                 <button data-tooltip-id="my-tooltip"  data-tooltip-content="LogOut" className="" onClick={handelLogOut}>

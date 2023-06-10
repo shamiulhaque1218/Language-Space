@@ -5,6 +5,7 @@ import GoogleSign from "../Form/GoogleSign"
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 
 const SignUp = () => {
@@ -12,23 +13,28 @@ const SignUp = () => {
 
   const [success, setSuccess] = useState("");
   const [data, setData] = useState("");
- const { register, handleSubmit, formState: { errors },reset } = useForm();
- const onSubmit = data =>  {
+  const { register, handleSubmit,watch, formState: { errors },reset } = useForm();
 
+  const onSubmit = data =>  {
   setData(data);
   const name = data.name;
   const email = data.email;
   const password = data.password;
   const photoURL = data.photoURL;
-  console.log(photoURL);
+  //console.log(photoURL);
 
 
     signUpUser(email,password)
       .then((result) => {
-        console.log(result.user);
+      //  console.log(result.user);
         updateUser(name, photoURL)
         .then(() => {
-          console.log("updated profile")
+         // console.log(name,photoURL);
+         const User = {name, email:result.user.email, photoURL, role: 'Student' }
+         axios.post(`http://localhost:5000/user`, User)
+        .then(data =>{
+            console.log(data) 
+          })
           reset();
           Swal.fire({
             position: 'top-end',
@@ -38,6 +44,7 @@ const SignUp = () => {
             timer: 1500
           })
         })
+       
         setSuccess("welcome! Create User Successfully");
         logOutUser();
       })
@@ -46,6 +53,7 @@ const SignUp = () => {
       });
  
 }
+
 
     return (
         <div className="grid lg:grid-cols-2 grid-cols-1 pb-10">
@@ -84,9 +92,7 @@ const SignUp = () => {
             {errors.email && <span className="text-red-600">Email is required</span>}
         </div>
 
-         <div className="mb-4">
-
-
+        <div className="mb-4">
         <label htmlFor="photoUrl" className="block text-gray-600 font-semibold mb-2 text-sm">Photo URL</label>
         <input type="text" name="photoURL" {...register("photoURL", { required: true })} className="border-gray-600 border-2 p-2 rounded-md w-full focus:outline-none focus:border-blue-500" />
         {errors.photoURL && <span className="text-red-600">PhotoURL is required</span>}
@@ -100,6 +106,7 @@ const SignUp = () => {
           <input
             type="password"  
             name="password"
+            id="password"
             {...register("password", { required: true,minLength:6, maxLength: 8, pattern: /(?=.*[A-Z])(?=.*[!@#$&+*])(?=.*[0-9])(?=.*[a-z])/ })}
             className="border-gray-600 border-2 p-1 rounded-md w-full focus:outline-none focus:border-blue-500"
           />
@@ -110,6 +117,19 @@ const SignUp = () => {
          
           
         </div>
+
+        <div className="mb-4">
+        <label htmlFor="confirmPassword" 
+        className="block text-gray-600 font-semibold mb-2 text-sm">Confirm Password</label>
+        <input type="password"
+         id="confirmPassword" {...register('confirmPassword', {
+          required: true, validate: (value) => value === watch('password')
+        })}
+         name="confirmPassword" className="border-gray-600 border-2 p-2 rounded-md w-full focus:outline-none focus:border-blue-500" />
+      {errors.confirmPassword?.type === 'validate' && (
+        <span className="text-red-600">Password and Confirm Password do not match</span>
+      )}
+      </div> 
 
         <div className="mt-4 mb-5 text-center text text-gray-500">
           <p>
@@ -122,6 +142,7 @@ const SignUp = () => {
         </div>
         <button
           type="submit"
+          value="Submit"
           className="bg-blue-600 hover:bg-blue-800 text-white font-semibold py-3  rounded-3xl focus:outline-none focus:shadow-outline w-full" >
           Agree & Join
         </button>
