@@ -3,6 +3,7 @@ import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import PopularClasses from './PopularClasses';
+import PopularInstractor from '../User/PopularInstractor';
 
 const ClassAndInstructor = () => {
     return (
@@ -17,7 +18,7 @@ const ClassAndInstructor = () => {
     <div className='pt-5'> <PopularClasses> </PopularClasses> </div>
     </TabPanel>
     <TabPanel>
-      <h2>Any content 2</h2>
+     <div className='pt-5'> <PopularInstractor> </PopularInstractor> </div>
     </TabPanel>
   </Tabs>
         </div>

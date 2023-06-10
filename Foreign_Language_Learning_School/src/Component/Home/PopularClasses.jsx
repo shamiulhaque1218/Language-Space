@@ -1,11 +1,16 @@
 /* eslint-disable no-unused-vars */
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import ContentLoader from "react-content-loader";
+import Swal from "sweetalert2";
+import ViewPopularClass from "./ViewPopularClass";
 
 const PopularClasses = () => {
+
+  //const {className,classImage,availableSeats,price} = update
+  
   const [axiosSecure] = useAxiosSecure();
 
   const {
@@ -19,7 +24,8 @@ const PopularClasses = () => {
       return data?.data;
     },
     queryKey: ["users"],
-  });
+  }); 
+  //console.log(tqData);
   if (isLoading) return <>
   <ContentLoader viewBox="0 0 380 70">
     {/* Only SVG shapes */}
@@ -33,31 +39,11 @@ const PopularClasses = () => {
 
   return (
     <div className="grid lg:grid-cols-3 grid-cols-1 gFont3 lg:px-14 px-10">
-      {tqData.map((res) => (
-        <div key={res._id}>
-          <div className="card shadow-gray-300 rounded-sm w-96 shadow-md px-2 mt-6 ml-2">
-            <figure>
-              <img
-                src={res.classImage}
-                alt="Shoes"
-                className="h-52 w-full m-2 rounded-lg"
-              />
-              
-            </figure>
-            <div className="card-body">
-              <div className="grid grid-cols-2 ">
-              <p className="card-title">{res.className}</p>
-              <p className="text-xl bgFont ml-20">$ {res.price}</p>
-              </div>
-              <p className="text-base"> <span className="font-semibold">Instructor name :</span>{res.name}</p>
-              <p className="text-base"> <span className="font-semibold">Available seats :</span>{res.availableSeats}</p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Course</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
+      {tqData.map(result => <ViewPopularClass key={result._id} result={result} > </ViewPopularClass>
+      
+      )
+      }
+
     </div>
   );
 };

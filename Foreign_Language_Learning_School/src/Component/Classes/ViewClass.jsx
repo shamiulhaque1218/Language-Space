@@ -194,7 +194,7 @@ const ViewClass = () => {
                 }
               
 
-              <Link to={`/feedback/${data._id}`}>
+              <Link to={`/feedback/${data._id}`} >
               <button
                 className="btn px-3 py-3 bg-orange-600 text-center">
             <FontAwesomeIcon className='h-4 text-white' icon={faComments} />

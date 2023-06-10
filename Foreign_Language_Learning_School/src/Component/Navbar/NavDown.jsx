@@ -1,6 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { useContext } from "react";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const NavDown = () => {
@@ -34,7 +36,16 @@ const NavDown = () => {
         </li>
         <div>
               <Link to="/viewclass"> <button>viewclass</button> </Link>
-            </div>
+        </div>
+        <div>
+              <Link to="/viewuser"> <button>view user</button> </Link>
+        </div>
+        <div>
+          <Link to="/mycart" data-tooltip-id="my-tooltip"  data-tooltip-content="My Cart" > <button className="px-3 pt-2 rounded-xl bg-yellow-600">
+       <FontAwesomeIcon className='h-6 text-white' icon={faCartShopping} />
+       </button> </Link>
+        </div>
+        
         
       </ul>
     </div>

@@ -19,7 +19,7 @@ const AddClass = () => {
     const availableSeats=data.AvailableSeats;
     const price=data.price;
      //console.log(data)
-     const ClassData = {className,classImage,name,email,availableSeats,price};
+     const ClassData = {className,classImage,name,email,availableSeats,price,status: 'pending'};
      console.log(ClassData);
 
      axios.post(`http://localhost:5000/class`, ClassData)

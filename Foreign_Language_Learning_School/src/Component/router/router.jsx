@@ -13,6 +13,8 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import UpdateClass from "../Classes/UpdateClass";
 import ViewClass from "../Classes/ViewClass";
 import Feedback from "../Classes/Feedback";
+import ViewUser from "../User/ViewUser";
+import MyCart from "../User/Cart/MyCart";
 
 
 const router = createBrowserRouter([
@@ -67,6 +69,14 @@ const router = createBrowserRouter([
         {
           path: "/viewclass",
           element: <PrivateRoute> <ViewClass /> </PrivateRoute>,
+        },
+        {
+          path: "/viewuser",
+          element: <PrivateRoute> <ViewUser /> </PrivateRoute>,
+        },
+        {
+          path: "/mycart",
+          element: <PrivateRoute> <MyCart /> </PrivateRoute>,
         },
         
       ],
