@@ -1,40 +1,38 @@
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../Hooks/useAxiosSecure";
-import ContentLoader from "react-content-loader";
+
+import { useEffect, useState } from "react";
 
 const PopularInstractor = () => {
-  const [axiosSecure] = useAxiosSecure();
 
-  const {
-    isLoading,
-    error,
-    data: tqData = [],
-  } = useQuery({
-    queryFn: async () => {
-      const data = await axiosSecure.get(`/user`);
-      //console.log({ fromTq: data });
-      return data?.data;
-    },
-    queryKey: ["users"],
-  });
-  if (isLoading)
-    return (
-      <>
-        <ContentLoader viewBox="0 0 380 70">
-          {/* Only SVG shapes */}
-          <rect x="0" y="0" rx="5" ry="5" width="70" height="70" />
-          <rect x="80" y="17" rx="4" ry="4" width="300" height="13" />
-          <rect x="80" y="40" rx="3" ry="3" width="250" height="10" />
-        </ContentLoader>{" "}
-      </>
-    );
-  if (error) return "An error has occurred: " + error.message;
+  const [popular,setPopular] = useState([])
+  
+  useEffect( () => {
+
+    fetch(`http://localhost:5000/user/ins/Instructor`)
+    .then((res) => res.json())
+    .then(data => {
+      setPopular(data)
+    })
+
+   } ,[])
+   console.log(popular);
+  // if (isLoading)
+  //   return (
+  //     <>
+  //       <ContentLoader viewBox="0 0 380 70">
+  //         {/* Only SVG shapes */}
+  //         <rect x="0" y="0" rx="5" ry="5" width="70" height="70" />
+  //         <rect x="80" y="17" rx="4" ry="4" width="300" height="13" />
+  //         <rect x="80" y="40" rx="3" ry="3" width="250" height="10" />
+  //       </ContentLoader>{" "}
+  //     </>
+  //   );
+
 
   return (
-    <div className="grid grid-cols-4">
-      {tqData.map((res) => (
+    <div className="grid grid-cols-4 px-12 ">
+      {popular.map((res) => (
         <div
-        className="gFont3 w-72 bg-base-100 shadow-2xl border-2 border-gray-200 rounded-2xl ml-5 "
+        className="mb-5 gFont3 w-72 bg-base-100 shadow-2xl border-2 border-gray-200 rounded-2xl ml-5 "
           key={res._id} >
           <figure>
             <img

@@ -49,7 +49,10 @@ const ViewPopularClass = ({result}) => {
   }
   // *** post data end ***
     return (
-        <div>
+        <div data-aos="fade-zoom-in"
+        data-aos-easing="ease-in-back"
+        data-aos-delay="300"
+        data-aos-offset="0">
         <div className="card shadow-gray-300 rounded-sm w-96 shadow-md px-2 mt-6 ml-2">
           <figure>
             <img
@@ -67,7 +70,7 @@ const ViewPopularClass = ({result}) => {
             <p className="text-base"> <span className="font-semibold">Instructor name :</span> {result.name}</p>
             <p className="text-base"> <span className="font-semibold">Available seats :</span> {result.availableSeats}</p>
             <div className="card-actions justify-end">
-              <button  onClick={() => addToCart(result)} className="btn btn-primary">Buy Course</button>
+              <button  onClick={() => addToCart(result)} className="btn btn-primary">Add to Cart</button>
             </div>
           </div>
         </div>

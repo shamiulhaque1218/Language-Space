@@ -1,13 +1,30 @@
+/* eslint-disable no-unused-vars */
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { useContext } from "react";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import useAxiosSecure from "../Hooks/useAxiosSecure";
+// import { useQuery } from "@tanstack/react-query";
 
 
 const NavDown = () => {
   const { user} = useContext(AuthContext);
- 
+  // const [axiosSecure] = useAxiosSecure();
+  // const {
+  //   isLoading,
+  //   refetch,
+  //   error,
+  //   data: tqData = [],
+  // } = useQuery({
+  //   queryFn: async () => {
+  //     const data = await axiosSecure.get(`/cart/${user?.email}`);
+  //     //console.log({ fromTq: data });
+  //     return data?.data;
+  //   },
+  //   queryKey: ["users"],
+  // });
+  
 
   return (
     <>  
@@ -43,6 +60,7 @@ const NavDown = () => {
         <div>
           <Link to="/mycart" data-tooltip-id="my-tooltip"  data-tooltip-content="My Cart" > <button className="px-3 pt-2 rounded-xl bg-yellow-600">
        <FontAwesomeIcon className='h-6 text-white' icon={faCartShopping} />
+       {/* <p className="px-1 text-white"> {tqData.length} </p> */}
        </button> </Link>
         </div>
         

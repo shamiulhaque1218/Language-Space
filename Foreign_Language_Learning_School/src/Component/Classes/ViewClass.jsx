@@ -6,7 +6,7 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComments, faPersonCircleCheck, faTrash, faUserAltSlash } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck, faCircleXmark, faComments, faTrash} from "@fortawesome/free-solid-svg-icons";
 import { faEdit } from "@fortawesome/free-regular-svg-icons";
 import { AuthContext } from "../../../provider/AuthProvider";
 
@@ -97,11 +97,6 @@ const ViewClass = () => {
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
         if (result.isConfirmed) {
-        //   Swal.fire(
-        //     'Deleted!',
-        //     'Your Toy data has been deleted.',
-        //     'success'
-        //   )
         fetch(`http://localhost:5000/class/${_id}`,{
             method: 'DELETE'
         })
@@ -154,42 +149,42 @@ const ViewClass = () => {
           <tr className="border-2">
             <td className="flex">
               <p className="p-3 text-center">  {index+1} </p>
-              <img className="h-12 w-12 ml-8 rounded-xl" src={data.classImage} alt="" />
+              <img className="h-12 w-12 ml-8 rounded-xl" src={data?.classImage} alt="" />
             </td>
-            <td className="p-3 text-center">{data.className} </td>
-            <td className="p-3 text-center">{data.name} </td>
-            <td className="p-3 text-center">{data.email} </td>
-            <td className="p-3 text-center">{data.availableSeats} </td>
+            <td className="p-3 text-center">{data?.className} </td>
+            <td className="p-3 text-center">{data?.name} </td>
+            <td className="p-3 text-center">{data?.email} </td>
+            <td className="p-3 text-center">{data?.availableSeats} </td>
             <td className="p-3 text-center"> 0 </td>
-            <td className="p-3 text-center"> {data.feedback ? data.feedback : "No Feedback" } </td>
-            <td className="p-3 text-center">{data.price} </td>
-            <td className="p-3 text-center"> {data.status ? data.status : "pending"} </td>
+            <td className="p-3 text-center"> {data?.feedback ? data?.feedback : "No Feedback" } </td>
+            <td className="p-3 text-center">{data?.price} </td>
+            <td className="p-3 text-center"> {data?.status } </td>
             {
               user && (
                 <td> 
             <div>
              
                 {
-                  data.status ? <button
+                  data.status === "approved" || data.status === "denied"   ? <button
                   onClick={() => handelAdd(data._id)}
                    className="btn px-3 py-3 bg-green-600 text-center space-x-1" disabled>
-                  <FontAwesomeIcon className='h-4 text-white' icon={faPersonCircleCheck} />
+                  <FontAwesomeIcon className='h-4 text-white' icon={faCircleCheck} />
                   </button> : <button
                 onClick={() => handelAdd(data._id)}
                  className="btn px-3 py-3 bg-green-600 text-center space-x-1">
-                <FontAwesomeIcon className='h-4 text-white' icon={faPersonCircleCheck} />
+                <FontAwesomeIcon className='h-4 text-white' icon={faCircleCheck} />
                 </button>
                 }
                 {
-                  data.status ? <button
+                  data.status === "approved" || data.status === "denied"   ? <button
                   onClick={() => handelReject(data._id)}
                   className="btn px-3 py-3 bg-red-600 text-center" disabled>
-                <FontAwesomeIcon className='h-4 text-white' icon={faUserAltSlash} />
+                <FontAwesomeIcon className='h-4 text-white' icon={faCircleXmark} />
                 </button> :
                 <button
                 onClick={() => handelReject(data._id)}
                 className="btn px-3 py-3 bg-red-600 text-center">
-              <FontAwesomeIcon className='h-4 text-white' icon={faUserAltSlash} />
+              <FontAwesomeIcon className='h-4 text-white' icon={faCircleXmark} />
               </button>
                 }
               

@@ -19,7 +19,7 @@ const PopularClasses = () => {
     data: tqData = [],
   } = useQuery({
     queryFn: async () => {
-      const data = await axiosSecure.get(`/class`);
+      const data = await axiosSecure.get(`class/popular/approved`);
       //console.log({ fromTq: data });
       return data?.data;
     },
