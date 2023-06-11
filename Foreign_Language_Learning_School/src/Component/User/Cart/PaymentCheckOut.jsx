@@ -4,7 +4,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { AuthContext } from "../../../../provider/AuthProvider";
-import '../My.css'
+
 
 
 const PaymentCheckOut = ({classPrice,tqData}) => {

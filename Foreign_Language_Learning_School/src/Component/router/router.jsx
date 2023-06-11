@@ -16,6 +16,7 @@ import Feedback from "../Classes/Feedback";
 import ViewUser from "../User/ViewUser";
 import MyCart from "../User/Cart/MyCart";
 import Payment from "../User/Cart/Payment";
+import Dashboard from "../Dashboard/Dashboard";
 
 
 const router = createBrowserRouter([
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
         {
           path: "/payment",
           element: <PrivateRoute> <Payment /> </PrivateRoute>,
+        },
+        {
+          path: "/dashboard",
+          element: <PrivateRoute> <Dashboard /> </PrivateRoute>,
         },
         
       ],
