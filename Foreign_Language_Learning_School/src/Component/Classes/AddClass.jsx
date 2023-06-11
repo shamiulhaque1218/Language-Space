@@ -4,6 +4,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const AddClass = () => {
@@ -38,10 +39,16 @@ const AddClass = () => {
      }
 
     return (
-       
+          <> 
+          <div className="bdimage">
+          <p className="gFont2 text-5xl pt-32  py-5 px-10">Add a new class</p> 
+          </div> 
             <div className="px-20 pb-20">
-              <p className="gFont2 text-3xl text-center py-5 px-10 font-semibold">Add a new class</p>
-      <form  onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-2">
+              
+              <Link className='ml-10' to="/dashboard" > <button className="mb-5 px-2 py-2 text-center font-bold text-white mt-5 bg-green-600 rounded-md hover:bg-green-800" >
+               Back to Dashboard
+             </button> </Link>
+      <form  onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 lg:grid-cols-2">
         <div className="mb-4 mx-10">
           <label
             htmlFor="name"
@@ -139,6 +146,7 @@ const AddClass = () => {
         </button>
       </form>
              </div>   
+             </>
        
     );
 };

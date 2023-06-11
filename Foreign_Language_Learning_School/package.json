@@ -33,8 +33,10 @@
     "react-hook-form": "^7.44.3",
     "react-icons": "^4.9.0",
     "react-router-dom": "^6.12.0",
+    "react-switch": "^7.0.0",
     "react-tabs": "^6.0.1",
     "react-tooltip": "^5.13.1",
+    "reactswitch": "^0.1.7",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.7.11"
   },

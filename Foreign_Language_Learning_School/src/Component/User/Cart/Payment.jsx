@@ -27,10 +27,12 @@ const Payment = ({classPrice}) => {
 
     return (
         <div>
-            <h2 className="p-8 ml-20 text-3xl gFont3">Payment</h2>
+            <div className="bdimage">
+          <p className="gFont2 text-5xl pt-32  py-5 px-10"> Payment </p> 
+          </div>
 
             <Elements stripe={stripePromise}>
-            <PaymentCheckOut tqData={tqData} classPrice={totalPrice}> </PaymentCheckOut>
+            <PaymentCheckOut tqData={tqData}  classPrice={totalPrice}> </PaymentCheckOut>
             </Elements>
             
         </div>

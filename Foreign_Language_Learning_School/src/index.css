@@ -28,5 +28,14 @@
     .bgFont{
       color: #F28054;
     }
+    .bdimage{
+      background-image: url('https://img.freepik.com/premium-photo/side-view-laptop-pc-with-color-light-dark-technology-gaming-concept_37129-944.jpg?w=900');
+      background-color: #07294d;
+      height: 300px;
+      width: 100%;
+      opacity: 0.9;
+      color: #fffffc;
+      font-weight: bold;
+    }
      
   }

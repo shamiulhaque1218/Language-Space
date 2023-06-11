@@ -6,11 +6,11 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleCheck, faCircleXmark, faComments, faTrash} from "@fortawesome/free-solid-svg-icons";
+import {  faTrash} from "@fortawesome/free-solid-svg-icons";
 import { faEdit } from "@fortawesome/free-regular-svg-icons";
 import { AuthContext } from "../../../provider/AuthProvider";
 
-const ViewClass = () => {
+const MyViewClass = () => {
   const {user} = useContext(AuthContext)
   const [axiosSecure] = useAxiosSecure();
 
@@ -21,7 +21,7 @@ const ViewClass = () => {
     data: tqData = [],
   } = useQuery({
     queryFn: async () => {
-      const data = await axiosSecure.get(`/class`);
+      const data = await axiosSecure.get(`/class/myclass/${user.email}`);
       //console.log({ fromTq: data });
       return data?.data;
     },
@@ -123,14 +123,13 @@ const ViewClass = () => {
 
   return (
     <div>
-         <div className="bdimage">
+      <div className="bdimage">
           <p className="gFont2 text-5xl pt-32  py-5 px-10">My Classes || {tqData.length} </p> 
           </div>
           
           <Link className='ml-10' to="/dashboard" > <button className="mb-5 px-2 py-2 text-center font-bold text-white mt-5 bg-green-600 rounded-md hover:bg-green-800" >
                Back to Dashboard
              </button> </Link>
-
       <table className="table table-compact w-full">
         <thead>
           <tr className="bg-black py-2 text-white gFont3">
@@ -139,10 +138,11 @@ const ViewClass = () => {
             <th className="text-center">Instructor Name</th>
             <th className="text-center">Instructor Email</th>
             <th className="text-center">Available seats</th>
+            <th className="text-center">Enrolled Students</th>
             <th className="text-center">Feedback</th>
             <th className="text-center">Price</th>
             <th className="text-center">Status</th>
-            <td className="p-3 text-center"> Action </td> 
+            <td className="p-3 text-center"> Action </td>
           </tr>
         </thead>
 
@@ -158,47 +158,27 @@ const ViewClass = () => {
             <td className="p-3 text-center">{data?.name} </td>
             <td className="p-3 text-center">{data?.email} </td>
             <td className="p-3 text-center">{data?.availableSeats} </td>
+            <td className="p-3 text-center"> 0 </td>
             <td className="p-3 text-center"> {data?.feedback ? data?.feedback : "No Feedback" } </td>
             <td className="p-3 text-center">{data?.price} </td>
             <td className="p-3 text-center"> {data?.status } </td>
             
                 <td> 
             <div>
-             
-                {
-                  data.status === "approved" || data.status === "denied"   ? <button
-                  onClick={() => handelAdd(data._id)}
-                   className="btn px-3 py-3 bg-green-600 text-center space-x-1" disabled>
-                  <FontAwesomeIcon className='h-4 text-white' icon={faCircleCheck} />
-                  </button> : <button
-                onClick={() => handelAdd(data._id)}
-                 className="btn px-3 py-3 bg-green-600 text-center space-x-1">
-                <FontAwesomeIcon className='h-4 text-white' icon={faCircleCheck} />
+              <Link to={`/update/${data._id}`}>
+                <button className="btn px-3 py-3 bg-green-600 text-center space-x-1">
+                <FontAwesomeIcon className='h-4 text-white' icon={faEdit} />
                 </button>
-                }
-                {
-                  data.status === "approved" || data.status === "denied"   ? <button
-                  onClick={() => handelReject(data._id)}
-                  className="btn px-3 py-3 bg-red-600 text-center" disabled>
-                <FontAwesomeIcon className='h-4 text-white' icon={faCircleXmark} />
-                </button> :
-                <button
-                onClick={() => handelReject(data._id)}
-                className="btn px-3 py-3 bg-red-600 text-center">
-              <FontAwesomeIcon className='h-4 text-white' icon={faCircleXmark} />
-              </button>
-                }
-              
-
-              <Link to={`/feedback/${data._id}`} >
-              <button
-                className="btn px-3 py-3 bg-orange-600 text-center">
-            <FontAwesomeIcon className='h-4 text-white' icon={faComments} />
-              </button>
               </Link>
+              <button
+                onClick={() => handelDelete(data._id)}
+                className="btn px-3 py-3 bg-red-600 text-center">
+            <FontAwesomeIcon className='h-4 text-white' icon={faTrash} />
+              </button>
             </div>
             </td>
              
+
           </tr>
         </tbody>
         )
@@ -209,5 +189,5 @@ const ViewClass = () => {
   );
 };
 
-export default ViewClass;
+export default MyViewClass;
 

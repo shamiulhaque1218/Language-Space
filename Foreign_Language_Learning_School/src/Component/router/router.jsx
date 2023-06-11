@@ -17,6 +17,9 @@ import ViewUser from "../User/ViewUser";
 import MyCart from "../User/Cart/MyCart";
 import Payment from "../User/Cart/Payment";
 import Dashboard from "../Dashboard/Dashboard";
+import MyViewClass from "../Classes/MyViewClass";
+import PaymentHistory from "../User/Cart/PaymentHistory";
+import MyEnrollClass from "../User/Cart/MyEnrollClass";
 
 
 const router = createBrowserRouter([
@@ -73,6 +76,10 @@ const router = createBrowserRouter([
           element: <PrivateRoute> <ViewClass /> </PrivateRoute>,
         },
         {
+          path: "/myclass",
+          element: <PrivateRoute> <MyViewClass /> </PrivateRoute>,
+        },
+        {
           path: "/viewuser",
           element: <PrivateRoute> <ViewUser /> </PrivateRoute>,
         },
@@ -87,6 +94,14 @@ const router = createBrowserRouter([
         {
           path: "/dashboard",
           element: <PrivateRoute> <Dashboard /> </PrivateRoute>,
+        },
+        {
+          path: "/paymenthistory",
+          element: <PrivateRoute> <PaymentHistory /> </PrivateRoute>,
+        },
+        {
+          path: "/enrollclass",
+          element: <PrivateRoute> <MyEnrollClass /> </PrivateRoute>,
         },
         
       ],

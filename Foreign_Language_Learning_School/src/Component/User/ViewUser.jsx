@@ -9,6 +9,7 @@ import {
   faChalkboardTeacher,
   faUserShield,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const ViewUser = () => {
   const { user } = useContext(AuthContext);
@@ -54,8 +55,8 @@ const ViewUser = () => {
         refetch();
         if (data.modifiedCount > 0) {
           Swal.fire({
-            title: "Class Updated",
-            text: "Update class Successfully",
+            title: "User Updated",
+            text: "Update User Successfully",
             icon: "success",
             confirmButtonText: "Done",
           });
@@ -76,8 +77,8 @@ const ViewUser = () => {
         refetch();
         if (data.modifiedCount > 0) {
           Swal.fire({
-            title: "Class Updated",
-            text: "Update class Successfully",
+            title: "User Updated",
+            text: "Update User Successfully",
             icon: "success",
             confirmButtonText: "Done",
           });
@@ -86,18 +87,25 @@ const ViewUser = () => {
   };
 
   return (
-    <div data-aos="fade-up"
-    data-aos-anchor-placement="top-bottom">
+    <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+
+       <div className="bdimage">
+          <p className="gFont2 text-5xl pt-32  py-5 px-10">Manage Users || {tqData.length} </p> 
+          </div>
+          
+          <Link className='ml-10' to="/dashboard" > <button className="mb-5 px-2 py-2 text-center font-bold text-white mt-5 bg-green-600 rounded-md hover:bg-green-800" >
+               Back to Dashboard
+             </button> </Link>
+
       <table className="table table-compact w-full">
         <thead>
           <tr className="bg-black py-2 text-white gFont3">
             <th className="text-center">Index</th>
-            <th className="text-center">Class Image</th>
-            <th className="text-center">Class Name</th>
-            <th className="text-center">Instructor Email</th>
+            <th className="text-center"> Image</th>
+            <th className="text-center">User Name</th>
+            <th className="text-center">User Email</th>
             <th className="text-center">role</th>
             <th className="text-center">Action</th>
-            <th className="text-center"></th>
           </tr>
         </thead>
 
@@ -112,13 +120,15 @@ const ViewUser = () => {
                   alt=""
                 />
               </td>
-              <td className="p-3 text-center">{data?.name} </td>
+              <td className="p-3 text-center">
+                {data?.name}
+              </td>
               <td className="p-3 text-center">{data?.email} </td>
               <td className="p-3 text-center"> {data?.role} </td>
               {user && (
                 <td>
                   <div>
-                    {data.role === "Instructor" ? (
+                    {data.role === "Instructor" || data.role === "Admin" ? (
                       <button
                         onClick={() => handelAddAdmin(data._id)}
                         className="btn px-3 py-3 bg-green-600 text-center space-x-1"
@@ -140,7 +150,7 @@ const ViewUser = () => {
                         />
                       </button>
                     )}
-                    {data.role === "Instructor" ? (
+                    {data.role === "Instructor" || data.role === "Admin" ? (
                       <button
                         onClick={() => handelAddInstructor(data._id)}
                         className="btn px-3 py-3 bg-blue-500 text-center"
@@ -165,7 +175,6 @@ const ViewUser = () => {
                   </div>
                 </td>
               )}
-              <td></td>
             </tr>
           </tbody>
         ))}

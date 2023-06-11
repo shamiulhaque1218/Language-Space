@@ -9,7 +9,7 @@ import ContentLoader from "react-content-loader";
 const NavTop = () => {
     
   const { user, logOutUser,loader} = useContext(AuthContext);
-  console.log(user?.photoURL)
+  //console.log(user?.photoURL)
   const handelLogOut = () => {
     logOutUser().then((res) => {
       console.log(res).catch((err) => {
