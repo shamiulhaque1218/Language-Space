@@ -5,7 +5,7 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import ContentLoader from "react-content-loader";
 import ViewPopularClass from "./ViewPopularClass";
 
-const PopularClasses = () => {
+const Classes = () => {
 
   
   const [axiosSecure] = useAxiosSecure();
@@ -16,7 +16,7 @@ const PopularClasses = () => {
     data: tqData = [],
   } = useQuery({
     queryFn: async () => {
-      const data = await axiosSecure.get(`/class/popular/approved`);
+      const data = await axiosSecure.get(`/class/classes/approved`);
       //console.log({ fromTq: data });
       return data?.data;
     },
@@ -35,14 +35,18 @@ const PopularClasses = () => {
   //console.log(tqData);
 
   return (
-    <div className="grid lg:grid-cols-3 grid-cols-1 gFont3 lg:px-14 px-10">
+    <>  <div className="bdimage">
+    <p className="gFont2 text-5xl pt-32  py-5 px-10">All Classes</p> 
+    </div> 
+    <div className="grid lg:grid-cols-3 pb-10 grid-cols-1 gFont3 lg:px-14 px-10">
       {tqData.map(result => <ViewPopularClass key={result._id} result={result} > </ViewPopularClass>
       
       )
       }
 
     </div>
+    </>
   );
 };
 
-export default PopularClasses;
+export default Classes;

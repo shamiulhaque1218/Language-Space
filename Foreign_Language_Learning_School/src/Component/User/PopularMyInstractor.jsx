@@ -3,13 +3,13 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import ContentLoader from "react-content-loader";
 
-const PopularInstractor = () => {
+const PopularMyInstractor = () => {
   const { loader} = useContext(AuthContext);
   const [popular,setPopular] = useState([])
   
   useEffect( () => {
 
-    fetch(`http://localhost:5000/user/ins/Instructor`)
+    fetch(`http://localhost:5000/user/instractor/Instructor`)
     .then((res) => res.json())
     .then(data => {
       setPopular(data)
@@ -30,11 +30,7 @@ const PopularInstractor = () => {
     );
 
 
-  return ( 
-    <>  
-    <div className="bdimage">
-          <p className="gFont2 text-5xl pt-32  py-5 px-10">All Instructor || {popular.length} </p> 
-          </div>
+  return (
     <div className="grid lg:grid-cols-4 grid-cols-1 px-12 ">
       {popular.map((res) => (
         <div
@@ -54,8 +50,7 @@ const PopularInstractor = () => {
         </div>
       ))}
     </div>
-    </>
   );
 };
 
-export default PopularInstractor;
+export default PopularMyInstractor;

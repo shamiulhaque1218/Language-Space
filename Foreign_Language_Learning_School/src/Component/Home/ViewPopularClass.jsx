@@ -68,7 +68,14 @@ const ViewPopularClass = ({result}) => {
             <p className="text-xl bgFont ml-20">${result.price} </p>
             </div>
             <p className="text-base"> <span className="font-semibold">Instructor name :</span> {result.name}</p>
-            <p className="text-base"> <span className="font-semibold">Available seats :</span> {result.availableSeats}</p>
+
+            {
+              result.availableSeats > 0 ? <p className="text-base"> <span className="font-semibold">Available seats :</span> {result.availableSeats}</p>
+              : 
+              <p className="text-base"> <span className="font-semibold">Available seats :</span> <span className="text-red-600">{result.availableSeats} </span>  </p>
+            }
+
+            
             <div className="card-actions justify-end">
               <button  onClick={() => addToCart(result)} className="btn btn-primary">Add to Cart</button>
             </div>

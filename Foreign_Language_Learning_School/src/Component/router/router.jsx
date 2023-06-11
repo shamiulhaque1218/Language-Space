@@ -20,6 +20,8 @@ import Dashboard from "../Dashboard/Dashboard";
 import MyViewClass from "../Classes/MyViewClass";
 import PaymentHistory from "../User/Cart/PaymentHistory";
 import MyEnrollClass from "../User/Cart/MyEnrollClass";
+import Classes from "../Home/Classes";
+import PopularInstractor from "../User/PopularInstractor";
 
 
 const router = createBrowserRouter([
@@ -80,8 +82,16 @@ const router = createBrowserRouter([
           element: <PrivateRoute> <MyViewClass /> </PrivateRoute>,
         },
         {
+          path: "/classes",
+          element:  <Classes /> ,
+        },
+        {
           path: "/viewuser",
           element: <PrivateRoute> <ViewUser /> </PrivateRoute>,
+        },
+        {
+          path: "/instructor",
+          element: <PrivateRoute> <PopularInstractor /> </PrivateRoute>,
         },
         {
           path: "/mycart",

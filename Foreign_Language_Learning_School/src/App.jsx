@@ -18,8 +18,8 @@ function App() {
     <div id={theme}>
          <NavTop> </NavTop>
          <div className="switch">
-          <label> {theme === "light" ? "Light Mode" : "Dark Mode"}</label>
-          <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
+          <label className="text-lg gFont" > {theme === "light" ? "Light Mode" : "Dark Mode"}</label>
+          <ReactSwitch className="h-5" onChange={toggleTheme} checked={theme === "dark"} />
         </div>
 
          <NavDown> </NavDown>

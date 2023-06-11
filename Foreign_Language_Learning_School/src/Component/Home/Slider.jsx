@@ -7,7 +7,7 @@ const Slider = () => {
         <p data-aos="fade-zoom-in"
      data-aos-easing="ease-in-back"
      data-aos-delay="300"
-     data-aos-offset="0" className="absolute gFont2 text-slate-600 lg:top-80 top-60 lg:left-24 left-10 lg:px-10 px-5 lg:py-6 py-3 bg-white rounded-md lg:text-3xl text-xl" >Learn today <br /> for a <br /> better tomorrow <br /> <span className=" mt-2 text-base">Education for all</span> </p>
+     data-aos-offset="0" className="absolute gFont2 text-slate-600 lg:top-80 top-80 lg:left-24 left-10 lg:px-10 px-5 lg:py-6 py-3 bg-white rounded-md lg:text-3xl text-xl" >Learn today <br /> for a <br /> better tomorrow <br /> <span className=" mt-2 text-base">Education for all</span> </p>
         <div id="item1" className="carousel-item w-full">
           <img
             src="https://burst.shopifycdn.com/photos/crayons-pencils-flatlay.jpg?width=925&format=pjpg&exif=1&iptc=1"
