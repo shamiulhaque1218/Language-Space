@@ -7,6 +7,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { AuthContext } from "../../../../provider/AuthProvider";
+import { Link } from "react-router-dom";
 
 
 const MyCart = () => {
@@ -69,14 +70,15 @@ const MyCart = () => {
               })
         
           };
-          const totalPrice = tqData.reduce((sum, item) => parseInt(item.classPrice) + sum, 0 )
+          const totalPrice = tqData.reduce((sum, item) => parseFloat(item.classPrice) + sum, 0 )
+          
 
   return (
     <div>
       <div className="flex gap-10 px-10 py-4">
         <p className="text-2xl font-semibold">Total Orders: {tqData.length} </p>
         <p className="text-2xl font-semibold">Total Price: ${totalPrice} </p>
-        <button className="btn btn-active btn-primary">Pay</button>
+       <Link to="/payment"> <button className="btn btn-active btn-primary">Pay</button> </Link>
       </div>
       <table className="table table-compact w-full">
         <thead>
