@@ -4,9 +4,10 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { AuthContext } from "../../../../provider/AuthProvider";
+import '../My.css'
 
 
-const PaymentCheckOut = ({classPrice}) => {
+const PaymentCheckOut = ({classPrice,tqData}) => {
     const stripe = useStripe();
     const elements = useElements();
     const{user} = useContext(AuthContext);
@@ -18,12 +19,14 @@ const PaymentCheckOut = ({classPrice}) => {
 
  useEffect(()=> {
   console.log(classPrice);
-  axiosSecure.post(`/create-payment-intent`, {classPrice})
+  if(classPrice > 0) {
+    axiosSecure.post(`/create-payment-intent`, {classPrice})
   .then(data=> {
     console.log(data.data.clientSecret);
     setClientSecret(data.data.clientSecret);
   })
- },[])
+  }
+ },[classPrice, axiosSecure])
 
 
     const handleSubmit = async (event) => {
@@ -74,6 +77,22 @@ const PaymentCheckOut = ({classPrice}) => {
         setProcessing(false);
         if(paymentIntent.status === 'succeeded') {
           setTransitionId(paymentIntent.id);
+          const payment = {email:user?.email, transitionId:paymentIntent.id,
+             classPrice,
+              quantity: tqData.length, MyClasses: tqData.map(res=> res.nameOfClass),
+               CartId: tqData.map(res=> res._id ),
+                MyClassId: tqData.map(res=> res.classId ),
+                 date: new Date(),
+                  orderStatus: 'service pending'
+           
+          }
+          axiosSecure.post(`/payments`, payment)
+          .then(res=> {
+            console.log(res);
+            if(res.data.result.insertedId) {
+              alert("comfirm")
+            }
+          })
         }
     
     }

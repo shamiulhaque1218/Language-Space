@@ -30,7 +30,7 @@ const Payment = ({classPrice}) => {
             <h2 className="p-8 ml-20 text-3xl gFont3">Payment</h2>
 
             <Elements stripe={stripePromise}>
-            <PaymentCheckOut classPrice={totalPrice}> </PaymentCheckOut>
+            <PaymentCheckOut tqData={tqData} classPrice={totalPrice}> </PaymentCheckOut>
             </Elements>
             
         </div>
