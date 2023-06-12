@@ -7,8 +7,8 @@ const PaymentHistory2 = ({data,index}) => {
              <tr className="border-2">
                <td className="p-3 text-center"> {index + 1} </td>
                <td className="p-3 text-center"> {data.MyClasses} </td>
-               <td className="p-3 text-center">{data.quantity} </td>
-               <td className="p-3 text-center">{data.classPrice} </td>
+               <td className="p-3 text-center">$ {data.classPrice} </td>
+               <td className="p-3 text-center">{data.transitionId} </td>
                <td className="p-3 text-center">{data.date} </td>
                <td className="p-3 text-center">{data.orderStatus} </td>
                

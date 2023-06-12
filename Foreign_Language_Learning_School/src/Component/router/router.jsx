@@ -22,6 +22,9 @@ import PaymentHistory from "../User/Cart/PaymentHistory";
 import MyEnrollClass from "../User/Cart/MyEnrollClass";
 import Classes from "../Home/Classes";
 import PopularInstractor from "../User/PopularInstractor";
+import InstractorRoutes from "../PrivateRoute/InstractorRoutes";
+import AdminRoute from "../PrivateRoute/AdminRoute";
+import Jwt from "../JWT/Jwt";
 
 
 const router = createBrowserRouter([
@@ -57,11 +60,11 @@ const router = createBrowserRouter([
         },
         {
           path: "/advertisement",
-          element: <Advertisement />,
+          element:  <Advertisement />,
         },
         {
           path: "/addclass",
-          element: <PrivateRoute> <AddClass /> </PrivateRoute> ,
+          element: <PrivateRoute> <InstractorRoutes> <AddClass /> </InstractorRoutes> </PrivateRoute> ,
         },
         {
           path: "/update/:id",
@@ -75,31 +78,32 @@ const router = createBrowserRouter([
         },
         {
           path: "/viewclass",
-          element: <PrivateRoute> <ViewClass /> </PrivateRoute>,
+          element: <PrivateRoute> <AdminRoute> <ViewClass /> </AdminRoute>   </PrivateRoute>,
         },
         {
           path: "/myclass",
-          element: <PrivateRoute> <MyViewClass /> </PrivateRoute>,
+          element: <PrivateRoute> <InstractorRoutes> <MyViewClass /> </InstractorRoutes> </PrivateRoute>,
         },
         {
           path: "/classes",
-          element:  <Classes /> ,
+          element:  <Classes />   ,
         },
         {
           path: "/viewuser",
-          element: <PrivateRoute> <ViewUser /> </PrivateRoute>,
+          element: <PrivateRoute> <AdminRoute> <ViewUser /> </AdminRoute>  </PrivateRoute>,
         },
         {
           path: "/instructor",
-          element: <PrivateRoute> <PopularInstractor /> </PrivateRoute>,
+          element:  <PopularInstractor /> ,
         },
         {
           path: "/mycart",
           element: <PrivateRoute> <MyCart /> </PrivateRoute>,
         },
         {
-          path: "/payment",
+          path: "/payment/:id",
           element: <PrivateRoute> <Payment /> </PrivateRoute>,
+          loader: ({params}) => fetch(`http://localhost:5000/cart/${params.id}`)
         },
         {
           path: "/dashboard",
@@ -112,6 +116,10 @@ const router = createBrowserRouter([
         {
           path: "/enrollclass",
           element: <PrivateRoute> <MyEnrollClass /> </PrivateRoute>,
+        },
+        {
+          path: "/jwt",
+          element: <Jwt />,
         },
         
       ],

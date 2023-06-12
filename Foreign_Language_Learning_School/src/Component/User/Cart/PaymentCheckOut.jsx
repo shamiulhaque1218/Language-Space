@@ -4,6 +4,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { AuthContext } from "../../../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 
@@ -79,18 +80,27 @@ const PaymentCheckOut = ({classPrice,tqData}) => {
           setTransitionId(paymentIntent.id);
           const payment = {email:user?.email, transitionId:paymentIntent.id,
              classPrice,
-              quantity: tqData.length, MyClasses: tqData.map(res=> res.nameOfClass),
-               CartId: tqData.map(res=> res._id ),
-                MyClassId: tqData.map(res=> res.classId ),
+              quantity: tqData.length, MyClasses: tqData.nameOfClass,
+               CartId: tqData._id,
+                MyClassId: tqData.classId ,
                  date: new Date(),
                   orderStatus: 'service pending'
            
           }
           axiosSecure.post(`/payments`, payment)
           .then(res=> {
-            console.log(res);
-            if(res.data.result.insertedId) {
-              alert("comfirm")
+            console.log(res.data);
+            if(res.data.insertResult.insertedId) {
+              Swal.fire({
+                title: 'Payment Successfully',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              })
+             
             }
           })
         }

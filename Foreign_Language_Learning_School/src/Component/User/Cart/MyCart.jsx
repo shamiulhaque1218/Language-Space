@@ -21,7 +21,7 @@ const MyCart = () => {
     data: tqData = [],
   } = useQuery({
     queryFn: async () => {
-      const data = await axiosSecure.get(`/cart/${user?.email}`);
+      const data = await axiosSecure.get(`/cart/email/${user?.email}`);
       //console.log({ fromTq: data });
       return data?.data;
     },
@@ -83,7 +83,6 @@ const MyCart = () => {
        <div className="flex gap-10 px-10 py-4">
          <p className="text-2xl font-semibold">Total Orders: {tqData.length} </p>
          <p className="text-2xl font-semibold">Total Price: ${totalPrice} </p>
-        <Link to="/payment"> <button className="btn btn-active btn-primary">Pay</button> </Link>
        </div>
        <table className="table table-compact w-full">
          <thead>
@@ -94,6 +93,7 @@ const MyCart = () => {
              <th className="text-center">My Email</th>
              <th className="text-center">Class Price</th>
              <th className="text-center">Action</th>
+             <th className="text-center">Payment</th>
            </tr>
          </thead>
  
@@ -116,6 +116,7 @@ const MyCart = () => {
                  className="btn px-3 py-3 bg-red-600 text-center">
              <FontAwesomeIcon className='h-4 text-white' icon={faTrash} />
                </button> </td>
+               <td><Link state={tqData} to={`/payment/${data._id}`}> <button className="btn btn-active btn-primary">Pay</button> </Link></td>
              </tr>
            </tbody>
          ))}

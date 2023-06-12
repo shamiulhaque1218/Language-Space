@@ -40,51 +40,6 @@ const MyViewClass = () => {
     );
   if (error) return "An error has occurred: " + error.message;
 
-  const handelAdd = (_id) => {
-    fetch(`http://localhost:5000/class/${_id}`, {
-        method: 'PATCH',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify({status: 'approved'})
-    })
-    .then(res => res.json())
-    .then(data =>{
-        console.log(data)
-        refetch();
-        if(data.modifiedCount > 0) {
-            Swal.fire({
-                title: 'Class Updated',
-                text: 'Update class Successfully',
-                icon: 'success',
-                confirmButtonText: 'Done'
-              })
-        }
-    })
-  }
-  const handelReject = (_id) => {
-    fetch(`http://localhost:5000/class/${_id}`, {
-        method: 'PATCH',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify({status: 'denied'})
-    })
-    .then(res => res.json())
-    .then(data =>{
-        console.log(data)
-        refetch();
-        if(data.modifiedCount > 0) {
-            Swal.fire({
-                title: 'Class Updated',
-                text: 'Update class Successfully',
-                icon: 'success',
-                confirmButtonText: 'Done'
-                
-              }) 
-        }
-    }) 
-  }
   
   const handelDelete = (_id) => {
     Swal.fire({

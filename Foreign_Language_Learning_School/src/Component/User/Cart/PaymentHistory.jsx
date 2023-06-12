@@ -39,38 +39,7 @@ const PaymentHistory = () => {
             </ContentLoader>
           </>
         );
-        const handelDelete = (_id) => {
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-              }).then((result) => {
-                if (result.isConfirmed) {
-                fetch(`http://localhost:5000/cart/${_id}`,{
-                    method: 'DELETE'
-                })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    if(data.deletedCount > 0) {
-                        Swal.fire(
-                                'Deleted!',
-                                'Your selected class has been deleted.',
-                                'success'
-                              )
-                              refetch();
-                              
-                    }
-                })
-        
-                }
-              })
-        
-          };
+       
                
 
   return (
@@ -80,6 +49,9 @@ const PaymentHistory = () => {
         <div className="bdimage">
            <p className="gFont2 text-5xl pt-32  py-5 px-10">My Payment History || {tqData.length} </p> 
            </div>
+           <Link className='ml-10' to="/dashboard" > <button className="mb-5 px-2 py-2 text-center font-bold text-white mt-5 bg-green-600 rounded-md hover:bg-green-800" >
+               Back to Dashboard
+             </button> </Link>
        <div className="flex gap-10 px-10 py-4">
        </div>
        <table className="table table-compact w-full">
@@ -87,8 +59,8 @@ const PaymentHistory = () => {
            <tr className="bg-black py-2 text-white gFont3">
              <th className="text-center">Index</th>
              <th className="text-center">Class</th>
-             <th className="text-center">Total Quantity</th>
              <th className="text-center">Total Price</th>
+             <th className="text-center">Transition Id</th>
              <th className="text-center">Date</th>
              <th className="text-center">Order Status</th>
            </tr>

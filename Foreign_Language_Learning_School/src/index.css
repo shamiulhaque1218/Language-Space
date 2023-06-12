@@ -41,6 +41,14 @@
       background-image: url('https://img.freepik.com/free-vector/flat-international-mother-language-day-illustration_23-2149219243.jpg?w=740&t=st=1686518173~exp=1686518773~hmac=5e8bbf536f6a39345546c04d57887b803e331eceb0ed20e4aaefd6bb79a6dc9f');
 
     }
+    .round{
+      border-top-left-radius: 100px;
+      border-bottom-right-radius: 100px;
+    }
+    .roundMd{
+      border-top-right-radius: 100px;
+      border-bottom-left-radius: 100px;
+    }
     
      
   }
