@@ -52,7 +52,7 @@ const MyViewClass = () => {
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
         if (result.isConfirmed) {
-        fetch(`http://localhost:5000/class/${_id}`,{
+        fetch(`https://foreign-language-learning-school-server-six.vercel.app/class/${_id}`,{
             method: 'DELETE'
         })
         .then(res => res.json())
@@ -113,7 +113,7 @@ const MyViewClass = () => {
             <td className="p-3 text-center">{data?.name} </td>
             <td className="p-3 text-center">{data?.email} </td>
             <td className="p-3 text-center">{data?.availableSeats} </td>
-            <td className="p-3 text-center"> 0 </td>
+            <td className="p-3 text-center"> {data?.enrollClass} </td>
             <td className="p-3 text-center"> {data?.feedback ? data?.feedback : "No Feedback" } </td>
             <td className="p-3 text-center">{data?.price} </td>
             <td className="p-3 text-center"> {data?.status } </td>

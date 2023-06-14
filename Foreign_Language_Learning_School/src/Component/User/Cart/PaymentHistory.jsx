@@ -22,7 +22,7 @@ const PaymentHistory = () => {
     data: tqData = [],
   } = useQuery({
     queryFn: async () => {
-      const data = await axiosSecure.get(`payments/${user?.email}`);
+      const data = await axiosSecure.get(`/payments/${user?.email}`);
       //console.log({ fromTq: data });
       return data?.data;
     },

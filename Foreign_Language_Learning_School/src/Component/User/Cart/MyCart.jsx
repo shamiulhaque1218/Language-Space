@@ -49,7 +49,7 @@ const MyCart = () => {
                 confirmButtonText: 'Yes, delete it!'
               }).then((result) => {
                 if (result.isConfirmed) {
-                fetch(`http://localhost:5000/cart/${_id}`,{
+                fetch(`https://foreign-language-learning-school-server-six.vercel.app/cart/${_id}`,{
                     method: 'DELETE'
                 })
                 .then(res => res.json())
@@ -110,7 +110,7 @@ const MyCart = () => {
                </td>
                <td className="p-3 text-center">{data.nameOfClass} </td>
                <td className="p-3 text-center">{data.userEmail} </td>
-               <td className="p-3 text-center">{data.classPrice} </td>
+               <td className="p-3 text-center">$ {data.classPrice} </td>
                <td><button
                  onClick={() => handelDelete(data._id)}
                  className="btn px-3 py-3 bg-red-600 text-center">

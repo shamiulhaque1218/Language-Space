@@ -9,7 +9,7 @@ const PopularMyInstractor = () => {
   
   useEffect( () => {
 
-    fetch(`http://localhost:5000/user/instractor/Instructor`)
+    fetch(`https://foreign-language-learning-school-server-six.vercel.app/user/instractor/Instructor`)
     .then((res) => res.json())
     .then(data => {
       setPopular(data)

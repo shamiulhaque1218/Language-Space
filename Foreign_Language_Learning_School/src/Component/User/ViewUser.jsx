@@ -42,7 +42,7 @@ const ViewUser = () => {
   if (error) return "An error has occurred: " + error.message;
 
   const handelAddAdmin = (_id) => {
-    fetch(`http://localhost:5000/user/${_id}`, {
+    fetch(`https://foreign-language-learning-school-server-six.vercel.app/user/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -64,7 +64,7 @@ const ViewUser = () => {
       });
   };
   const handelAddInstructor = (_id) => {
-    fetch(`http://localhost:5000/user/${_id}`, {
+    fetch(`https://foreign-language-learning-school-server-six.vercel.app/user/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

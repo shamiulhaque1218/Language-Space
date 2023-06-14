@@ -31,7 +31,7 @@ const SignUp = () => {
         .then(() => {
          // console.log(name,photoURL);
          const User = {name, email:result.user.email, photoURL, role: 'Student' }
-         axios.post(`http://localhost:5000/user`, User)
+         axios.post(`https://foreign-language-learning-school-server-six.vercel.app/user`, User)
         .then(data =>{
             console.log(data) 
           })

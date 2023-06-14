@@ -25,7 +25,7 @@ const ViewClass = () => {
       //console.log({ fromTq: data });
       return data?.data;
     },
-    queryKey: ["users"],
+    queryKey: ["myuser"],
   });
   if (isLoading)
     return (
@@ -41,7 +41,7 @@ const ViewClass = () => {
   if (error) return "An error has occurred: " + error.message;
 
   const handelAdd = (_id) => {
-    fetch(`http://localhost:5000/class/${_id}`, {
+    fetch(`https://foreign-language-learning-school-server-six.vercel.app/class/${_id}`, {
         method: 'PATCH',
         headers: {
             'content-type': 'application/json'
@@ -63,7 +63,7 @@ const ViewClass = () => {
     })
   }
   const handelReject = (_id) => {
-    fetch(`http://localhost:5000/class/${_id}`, {
+    fetch(`https://foreign-language-learning-school-server-six.vercel.app/class/${_id}`, {
         method: 'PATCH',
         headers: {
             'content-type': 'application/json'

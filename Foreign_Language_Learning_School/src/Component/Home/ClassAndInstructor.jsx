@@ -10,8 +10,8 @@ const ClassAndInstructor = () => {
         <div>
   <Tabs>
     <TabList className="border-0 gFont3 ml-10 flex gap-5">
-      <Tab className="border-0"> <div className="text-lg bgBtn text-white rounded-md py-4 px-12">Popular Classes</div> </Tab>
-      <Tab className="border-0"> <div className="text-lg bgBtn text-white rounded-md py-4 px-12">Popular Instructors</div> </Tab>
+      <Tab className="border-0"> <div className="text-lg bg-yellow-600 text-white rounded-md py-4 px-12">Popular Classes</div> </Tab>
+      <Tab className="border-0"> <div className="text-lg bg-yellow-600 text-white rounded-md py-4 px-12">Popular Instructors</div> </Tab>
     </TabList>
 
     <TabPanel>

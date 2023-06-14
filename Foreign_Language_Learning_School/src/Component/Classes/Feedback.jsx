@@ -17,7 +17,7 @@ const Feedback = () => {
     const ClassData = {feedback};
     console.log(ClassData);
 
-    fetch(`http://localhost:5000/class/${_id}`, {
+    fetch(`https://foreign-language-learning-school-server-six.vercel.app/class/${_id}`, {
         method: 'PATCH',
         headers: {
             'content-type': 'application/json'

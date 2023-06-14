@@ -5,6 +5,8 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import ContentLoader from "react-content-loader";
+import { useQuery } from "@tanstack/react-query";
 
 const ViewPopularClass = ({result}) => {
 
@@ -47,15 +49,53 @@ const ViewPopularClass = ({result}) => {
       })
     }
 
-    fetch(`http://localhost:5000/jwt`, {
-        method:"POST",
-        headers: {
-            "content-type":"application/json",
-        }, body: JSON.stringify({username: user.email}),
-    }).then((res)=> res.json()).then((data) => localStorage.setItem("access-token", data?.token))
+    // fetch(`https://foreign-language-learning-school-server-six.vercel.app/jwt`, {
+    //     method:"POST",
+    //     headers: {
+    //         "content-type":"application/json",
+    //     }, body: JSON.stringify({email: user.email}),
+    // }).then((res)=> res.json()).then((data) => localStorage.setItem("access-token", data?.token))
 
   }
   // *** post data end ***
+  // ** check user admin or instructor ***
+  const {
+    isLoading,
+    data: isAdmin = [],
+  } = useQuery({
+    queryFn: async () => {
+      const data5 = await axiosSecure.get(`/user/ins/Admin/${user.email}`);
+      //console.log({ fromTq: data });
+      return data5?.data;
+    },
+    queryKey: ["admin5"],
+  });
+
+  const {
+    data: isInstructor = [],
+  } = useQuery({
+    queryFn: async () => {
+      const data3 = await axiosSecure.get(`/user/ins/Instructor/${user.email}`);
+      //console.log({ fromTq: data });
+      return data3?.data;
+    },
+    queryKey: ["instructor3"],
+  });
+
+
+  if (isLoading)
+    return (
+      <>
+        <ContentLoader viewBox="0 0 380 70">
+          <rect x="0" y="0" rx="5" ry="5" width="70" height="70" />
+          <rect x="80" y="17" rx="4" ry="4" width="300" height="13" />
+          <rect x="80" y="40" rx="3" ry="3" width="250" height="10" />
+        </ContentLoader>{" "}
+      </>
+    );
+  //  console.log(isAdmin,isInstructor)
+    //*** end ****
+
     return (
         <div data-aos="fade-zoom-in"
         data-aos-easing="ease-in-back"
@@ -77,15 +117,30 @@ const ViewPopularClass = ({result}) => {
             </div>
             <p className="text-base"> <span className="font-semibold">Instructor name :</span> {result.name}</p>
 
-            {
-              result.availableSeats > 0 ? <p className="text-base"> <span className="font-semibold">Available seats :</span> {result.availableSeats}</p>
+            
+              {
+                result.availableSeats > 0 ? <p className="text-base"> <span className="font-semibold">Available seats :</span> {result.availableSeats}</p>
               : 
-              <p className="text-base"> <span className="font-semibold">Available seats :</span> <span className="text-red-600">{result.availableSeats} </span>  </p>
-            }
-
+              <p className="text-base text-red-600"> <span className="font-semibold">Available seats :</span> {result.availableSeats} </p>
+              } 
+  
+            
             
             <div className="card-actions justify-end">
-              <button  onClick={() => addToCart(result)} className="btn btn-primary">Add to Cart</button>
+
+            {
+                (!isAdmin.length && !isInstructor.length && result.availableSeats !== 0) ? (
+                 <button onClick={() => addToCart(result)} className="btn btn-primary">
+                 Add to Cart
+                </button>
+               ) : (
+              <button disabled className="btn btn-primary">
+              Add to Cart
+              </button>
+              )
+              }
+
+
             </div>
           </div>
         </div>

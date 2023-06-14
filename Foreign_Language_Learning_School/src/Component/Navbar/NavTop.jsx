@@ -11,8 +11,11 @@ const NavTop = () => {
   const { user, logOutUser,loader} = useContext(AuthContext);
   //console.log(user?.photoURL)
   const handelLogOut = () => {
-    logOutUser().then((res) => {
-      console.log(res).catch((err) => {
+    logOutUser()
+    .then((res) => {
+      console.log(res)
+      //localStorage.removeItem("access-token")
+      .catch((err) => {
         console.log(err);
       });
     });

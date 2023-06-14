@@ -4,11 +4,13 @@ import GoogleSign from "./GoogleSign";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
+import { useState } from "react";
 
 
 const Login = () => {
 
     const {signInUser} = useContext(AuthContext);
+    const [dataerror,setDataError] = useState('')
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
@@ -21,10 +23,32 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        
+        //   // jwt
+        //   const logEmail = {
+        //     email: loggedUser.email
+        //   }
+
+
+        //   fetch('http://localhost:5000/jwt', {
+        // method: 'PATCH',
+        // headers: {
+        //     'content-type': 'application/json'
+        // },
+        // body: JSON.stringify(logEmail)
+        // }).then(res => res.json()).then(data=> {
+        //   console.log('jwt response', data)
+        //   localStorage.setItem("access-token", data?.token)
+        // })
+
+    
+
+        //  // jwt
+
         navigate("/");
       })
       .catch((error) => {
-        console.log(error.message);
+        setDataError(error.message);
       });
     } 
     
@@ -66,7 +90,10 @@ const Login = () => {
         >
           Sign in
         </button>
-        {/* <div className="text-red-500 py-2">{errors}</div> */}
+
+        
+        <div className="text-red-500 py-2">{dataerror}</div>
+       
 
         <div className="my-5">
           <GoogleSign> </GoogleSign>

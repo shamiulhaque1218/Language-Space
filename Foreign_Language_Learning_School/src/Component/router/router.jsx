@@ -24,7 +24,6 @@ import Classes from "../Home/Classes";
 import PopularInstractor from "../User/PopularInstractor";
 import InstractorRoutes from "../PrivateRoute/InstractorRoutes";
 import AdminRoute from "../PrivateRoute/AdminRoute";
-import Jwt from "../JWT/Jwt";
 
 
 const router = createBrowserRouter([
@@ -69,12 +68,12 @@ const router = createBrowserRouter([
         {
           path: "/update/:id",
           element: <UpdateClass />,
-          loader: ({params}) => fetch(`http://localhost:5000/class/${params.id}`),
+          loader: ({params}) => fetch(`https://foreign-language-learning-school-server-six.vercel.app/class/${params.id}`),
         },
         {
           path: "/feedback/:id",
           element: <Feedback />,
-          loader: ({params}) => fetch(`http://localhost:5000/class/${params.id}`),
+          loader: ({params}) => fetch(`https://foreign-language-learning-school-server-six.vercel.app/class/${params.id}`),
         },
         {
           path: "/viewclass",
@@ -103,7 +102,7 @@ const router = createBrowserRouter([
         {
           path: "/payment/:id",
           element: <PrivateRoute> <Payment /> </PrivateRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/cart/${params.id}`)
+          loader: ({params}) => fetch(`https://foreign-language-learning-school-server-six.vercel.app/cart/${params.id}`)
         },
         {
           path: "/dashboard",
@@ -117,10 +116,7 @@ const router = createBrowserRouter([
           path: "/enrollclass",
           element: <PrivateRoute> <MyEnrollClass /> </PrivateRoute>,
         },
-        {
-          path: "/jwt",
-          element: <Jwt />,
-        },
+        
         
       ],
     },

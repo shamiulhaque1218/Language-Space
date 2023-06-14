@@ -16,6 +16,7 @@ const InstractorRoutes = ({ children }) => {
       } = useQuery({
         queryFn: async () => {
           const data = await axiosSecure.get(`/user/ins/Instructor/${user.email}`);
+          
          console.log(data?.data );
           return data?.data;
         },
@@ -39,7 +40,7 @@ const InstractorRoutes = ({ children }) => {
     if ( !tqData.length == 0 ) {
         return children;
     }
-    return <Navigate to="/login"> </Navigate>
+    return <Navigate to="/"> </Navigate>
 };
 
 export default InstractorRoutes;

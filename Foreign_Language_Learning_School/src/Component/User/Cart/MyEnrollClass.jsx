@@ -15,7 +15,7 @@ const MyEnrollClass = () => {
     data: tqData = [],
   } = useQuery({
     queryFn: async () => {
-      const data = await axiosSecure.get(`payments/${user?.email}`);
+      const data = await axiosSecure.get(`/payments/${user?.email}`);
       //console.log({ fromTq: data });
       return data?.data;
     },
@@ -38,7 +38,7 @@ const MyEnrollClass = () => {
       {
         tqData.length > 0 ? <div>
         <div className="bdimage">
-           <p className="gFont2 text-5xl pt-32  py-5 px-10">My Payment History || {tqData.length} </p> 
+           <p className="gFont2 text-5xl pt-32  py-5 px-10">My Enroll Class || {tqData.length} </p> 
            </div>
            <Link className='ml-10' to="/dashboard" > <button className="mb-5 px-2 py-2 text-center font-bold text-white mt-5 bg-green-600 rounded-md hover:bg-green-800" >
                Back to Dashboard

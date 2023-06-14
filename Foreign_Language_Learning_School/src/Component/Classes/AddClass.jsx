@@ -17,13 +17,16 @@ const AddClass = () => {
     const onSubmit = data =>  {
     const className=data.name;
     const classImage=data.pictureURL;
-    const availableSeats=data.AvailableSeats;
+    const availableSeat=data.AvailableSeats;
+    const availableSeats = parseFloat(availableSeat);
+    const enrollClasses = 0;
+    const enrollClass = parseFloat(enrollClasses);
     const price=data.price;
      //console.log(data)
-     const ClassData = {className,classImage,name,email,availableSeats,price,status: 'pending'};
+     const ClassData = {className,classImage,name,email,availableSeats,enrollClass,price,status: 'pending'};
      console.log(ClassData);
 
-     axios.post(`http://localhost:5000/class`, ClassData)
+     axios.post(`https://foreign-language-learning-school-server-six.vercel.app/class`, ClassData)
     .then(data =>{
         console.log(data)
         if(data.data.insertedId) {

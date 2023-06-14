@@ -14,7 +14,7 @@ const GoogleSign = () => {
       .then((result) => {
         const User = {name:result.user.displayName , email:result.user.email, photoURL:result.user.photoURL, role: 'Student' }
         console.log(User);
-         axios.post(`http://localhost:5000/user`, User)
+         axios.post(`https://foreign-language-learning-school-server-six.vercel.app/user`, User)
         .then(data =>{
             console.log(data) 
           })

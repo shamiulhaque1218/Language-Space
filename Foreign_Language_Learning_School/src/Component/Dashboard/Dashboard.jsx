@@ -48,9 +48,6 @@ const Dashboard = () => {
 
 
 
-
-
-
   if (isLoading)
     return (
       <>
@@ -73,6 +70,7 @@ const Dashboard = () => {
         <div className="drawer-content">
           {/* Page content here */}
           <label htmlFor="my-drawer" className="btn my-20 ml-2 bgBtn drawer-button">
+            <p className="text-white">My Dashboard</p>
           <FontAwesomeIcon className="h-4 text-white" icon={faBars}/>
           </label>
         </div>

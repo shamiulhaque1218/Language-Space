@@ -24,12 +24,13 @@ const UpdateClass = () => {
     const onSubmit = data =>  {
     const className=data.name;
     const classImage=data.pictureURL;
-    const availableSeats=data.AvailableSeats;
+    const availableSeatses=data.AvailableSeats;
+    const availableSeats=parseFloat(availableSeatses);
     const price=data.price;
     const ClassData = {className,classImage,name,email,availableSeats,price};
     console.log(ClassData);
 
-    fetch(`http://localhost:5000/class/${_id}`, {
+    fetch(`https://foreign-language-learning-school-server-six.vercel.app/class/${_id}`, {
         method: 'PATCH',
         headers: {
             'content-type': 'application/json'
