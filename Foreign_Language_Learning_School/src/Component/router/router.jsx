@@ -67,7 +67,7 @@ const router = createBrowserRouter([
         },
         {
           path: "/update/:id",
-          element: <UpdateClass />,
+          element: <InstractorRoutes> <UpdateClass /> </InstractorRoutes> ,
           loader: ({params}) => fetch(`https://foreign-language-learning-school-server-six.vercel.app/class/${params.id}`),
         },
         {
