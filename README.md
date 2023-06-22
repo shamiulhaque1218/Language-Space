@@ -1,4 +1,4 @@
-<h2 align="center"> The Language Space</h3>
+<h2 align="center"> Language Space</h3>
 <img src="https://i.postimg.cc/wx4JxZtv/logo.png" style="height:180px"  /> 
 
 <h3>  </h3>
