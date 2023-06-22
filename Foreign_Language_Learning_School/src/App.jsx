@@ -4,7 +4,7 @@ import NavDown from "./Component/Navbar/NavDown"
 import Footer from "./Component/Footer/Footer"
 import { createContext, useEffect, useState } from "react";
 import "./App.css"
-import ReactSwitch from "react-switch";
+import DayNightToggle from 'react-day-and-night-toggle'
 
 export const ThemeContext = createContext(null);
 
@@ -79,11 +79,10 @@ function App() {
     <ThemeContext.Provider  value={{ theme, toggleTheme }}>    
     <div id={theme}>
          <NavTop> </NavTop>
-         <div className="switch">
-          <label className="text-lg gFont" > {theme === "light" ? "Light Mode" : "Dark Mode"}</label>
-          <ReactSwitch className="h-5" onChange={toggleTheme} checked={theme === "dark"} />
+         <div className="switch h-0">
+          <label className="text-sm gFont2" > {theme === "light" ? "Light Mode" : "Dark Mode"}</label>
+          <DayNightToggle className="ml-2" size={25}  onChange={toggleTheme} checked={theme === "dark"} />
         </div>
-
          <NavDown> </NavDown>
          <Outlet> </Outlet>
          <Footer> </Footer>

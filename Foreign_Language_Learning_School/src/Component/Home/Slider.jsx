@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const Slider = () => {
   return (
@@ -6,17 +7,30 @@ const Slider = () => {
       
         <p data-aos="fade-zoom-in"
      data-aos-easing="ease-in-back"
-     data-aos-delay="300"
-     data-aos-offset="0" className="absolute gFont2 text-slate-600 lg:top-80 top-80 lg:left-24 left-10 lg:px-10 px-5 lg:py-6 py-3 bg-white rounded-md lg:text-3xl text-xl" >Learn today <br /> for a <br /> better tomorrow <br /> <span className=" mt-2 text-base">Education for all</span> </p>
+     data-aos-delay="600"
+     data-aos-offset="0" className="absolute gFont3 text-slate-600 lg:top-80 top-52
+      lg:left-24 left-12 lg:px-14 px-8 lg:py-8 py-3
+       bg-white rounded-md lg:text-4xl text-xl" > 
+     Learn today  for a  better <br />  tomorrow
+      <br />
+      <span className=" mt-2 lg:text-lg text-base">It can change a human completely</span> 
+       <br />
+      <div className="flex gap-5 mt-3">
+         <Link to="/signup" className="lg:text-lg text-base text-white
+          bg-blue-600 px-3 py-2  rounded-md"> Join For Free</Link>
+       <Link to="/classes" className="lg:text-lg text-base text-blue-600 bg-white border-2
+        border-blue-600 px-3 py-2 rounded-md"> See Courses </Link>
+      </div>
+       </p>
         <div id="item1" className="carousel-item w-full">
           <img
-            src="https://burst.shopifycdn.com/photos/crayons-pencils-flatlay.jpg?width=925&format=pjpg&exif=1&iptc=1"
+            src="https://images.pexels.com/photos/4260485/pexels-photo-4260485.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             className="lg:sliderImg h-96 w-full"
           />
         </div>
         <div id="item2" className="carousel-item w-full">
           <img
-            src="https://burst.shopifycdn.com/photos/numbers-pencils-chalkboard.jpg?width=925&format=pjpg&exif=1&iptc=1"
+            src="https://images.pexels.com/photos/5212695/pexels-photo-5212695.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             className="lg:sliderImg h-96 w-full "
           />
         </div>
@@ -28,7 +42,7 @@ const Slider = () => {
         </div> */}
         <div id="item3" className="carousel-item w-full">
           <img
-            src="https://img.freepik.com/free-vector/language-word-concept-background_23-2147868616.jpg?w=740&t=st=1686204416~exp=1686205016~hmac=9e72ccffad7b335b9a8b3b8e22de59d8751f93d8ade728dc62ae7310e6d3df3f"
+            src="https://images.pexels.com/photos/5212329/pexels-photo-5212329.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             className="lg:sliderImg h-96 w-full "
           />
         </div>

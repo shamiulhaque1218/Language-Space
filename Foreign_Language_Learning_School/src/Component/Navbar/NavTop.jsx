@@ -30,26 +30,35 @@ const NavTop = () => {
   }
 
     return (
-        <div className="flex bg p-2 justify-between lg:px-5 gFont" data-aos="zoom-out-left">
-             <img src="logo.png" className="rounded-full border-gray-900 border-2 lg:h-20 lg:w-20 w-14 h-14" alt="" />
-            <p className="lg:text-3xl text-xl lg:mt-5 mt-3 lg:mr-96 mr-14 lg:pr-96 text-slate-100 font-bold"> The Language Space </p> 
-            <div data-tooltip-id="my-tooltip"  data-tooltip-content={user?.displayName} >
-             {user?.photoURL && <img className="h-14 w-14 mt-3 rounded-full" src={user.photoURL} alt="" />
-             }
-            </div>
-      
-            <div className="mt-4 lg:mt-5 text-white lg:text-xl text-md">
-                {!user && ( <Link to="/login">  Login
+        <div className="flex bg p-1 pb-4  lg:px-5 gFont" data-aos="zoom-out-left">
+             {/* <img src="logo.png" className="rounded-full border-gray-900 border-2 lg:h-12 lg:w-12 w-12 h-12" alt="" /> */}
+            <Link to="/" className="lg:text-3xl text-2xl mt-2 text-slate-100 font-bold"> Language Space </Link> 
+            <Link to="/classes" className="ml-10 mt-3 pt-2 hidden lg:block text-sm gFont3 bg-white h-9 px-4 rounded-md text-blue-600 font-semibold"> Explore </Link>
+
+            <div className="mt-4 lg:mt-5 text-white gFont3 text-semibold text-md">
+                {!user && ( <Link className="lg:ml-96 lg:pl-96 font-semibold" to="/login">  Login
+                </Link>  )}
+                {!user && ( <Link className="font-semibold lg:ml-5 ml-1" to="/signup">  SignUp
                 </Link>  )}
                 {user && (
                 <button data-tooltip-id="my-tooltip"  data-tooltip-content="LogOut" className="" onClick={handelLogOut}>
                  <FontAwesomeIcon className='h-8 text-white' icon={faRightFromBracket} />
                   </button> )}
             </div>
+            
+            
+      
+           
          <Tooltip id="my-tooltip" />
-        </div>
+       </div>
+      
         
     );
 };
 
 export default NavTop;
+
+
+
+
+           
