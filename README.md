@@ -5,7 +5,7 @@
 <h3> Live Link: https://the-language-space.netlify.app/ </h3>
 <h3> Server Site Link: https://github.com/programming-hero-web-course1/b7a12-summer-camp-server_side-shamiulhaque1218 </h3>
 <h3> Teacher Login: email:kimseong@gmail.com password:Alvi+123  </h3>
-<h4> Payment: Stripe Card Demo:4242424242424242 Date:Any Vaild Date CVC:Any 3 digit ZIP:Any 5 digit  </h5>
+<h4> Payment: Stripe Card Demo:4242 4242 4242 4242 Date:Any Vaild Date CVC:Any 3 digit ZIP:Any 5 digit  </h5>
 
 
 <h5 >It's a react full stack project. I use Mobgodb database in my backend.</h5>
