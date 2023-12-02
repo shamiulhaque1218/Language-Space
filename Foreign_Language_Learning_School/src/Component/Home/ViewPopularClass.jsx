@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
-
+import { MdClass } from "react-icons/md";
+import { MdOutlinePeopleOutline } from "react-icons/md";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { useContext } from "react";
@@ -100,50 +101,58 @@ const ViewPopularClass = ({result}) => {
         <div data-aos="fade-zoom-in"
         data-aos-easing="ease-in-back"
         data-aos-delay="300"
-        data-aos-offset="0">
-        <div className="card shadow-gray-300 rounded-sm w-96 shadow-md px-2 mt-6 ml-2">
-          <figure>
+        data-aos-offset="0"
+        className="shadow-gray-300 shadow-xl">
+        <div className="card rounded-lg  border lg:px-2 px-2">
+          <figure className="m-3 mt-4">
             <img
               src={result.classImage}
-              alt="Shoes"
-              className="h-52 w-full m-2 rounded-lg"
+              alt="class"
+              className="h-52 w-full rounded-lg transform transition duration-300 hover:scale-110"
             />
             
           </figure>
-          <div className="card-body">
-            <div className="grid grid-cols-2 ">
-            <p className="card-title"> {result.className} </p>
-            <p className="text-xl bgFont ml-20">${result.price} </p>
-            </div>
-            <p className="text-base"> <span className="font-semibold">Instructor name :</span> {result.name}</p>
-
+          <div className="pl-3">
+            <p className="text-lg font-semibold py-5"> {result.className} </p>
+            <p className="text-lg bg-blue-600 rounded-sm px-2 text-white absolute top-10 right-10">${result.price} </p>
+            <p className="text-sm"> By <span className="text-blue-600">{result.name}</span> </p>
             
-              {
-                result.availableSeats > 0 ? <p className="text-base"> <span className="font-semibold">Available seats :</span> {result.availableSeats}</p>
+            <container className="flex gap-5 pt-2 pb-3 text-gray-500">
+            <p> <MdClass className="inline text-lg" />
+             12 Classes 
+             </p>
+
+            <div>
+            {
+                result.availableSeats > 0 ? <p className="text-md"> <span className="font-semibold"> <MdOutlinePeopleOutline className="inline" /> </span> {result.availableSeats} seats available </p>
               : 
-              <p className="text-base text-red-600"> <span className="font-semibold">Available seats :</span> {result.availableSeats} </p>
+              <p className=" text-red-600"> <span className="font-semibold">
+                <MdOutlinePeopleOutline className="inline" />
+                </span> {result.availableSeats} seat available </p>
               } 
   
-            
-            
-            <div className="card-actions justify-end">
-
-            {
-                (!isAdmin.length && !isInstructor.length && result.availableSeats !== 0) ? (
-                 <button onClick={() => addToCart(result)} className="btn btn-primary">
-                 Add to Cart
-                </button>
-               ) : (
-              <button disabled className="btn btn-primary">
-              Add to Cart
-              </button>
-              )
-              }
-
-
             </div>
+            </container>
+             
+            
           </div>
         </div>
+        <div className="bg-blue-600 text-center rounded-b-lg">
+
+{
+    (!isAdmin.length && !isInstructor.length && result.availableSeats !== 0) ? (
+     <button onClick={() => addToCart(result)} className="p-2 bg-blue-600 text-white rounded-md text-sm">
+     Add to Cart
+    </button>
+   ) : (
+  <button disabled className="p-2 bg-blue-600 text-white rounded-md text-sm">
+  Add to Cart
+  </button>
+  )
+  }
+
+
+</div>
       </div>
     );
 };

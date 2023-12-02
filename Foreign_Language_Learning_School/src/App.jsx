@@ -1,6 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom"
 import NavTop from "./Component/Navbar/NavTop"
-import NavDown from "./Component/Navbar/NavDown"
 import Footer from "./Component/Footer/Footer"
 import { createContext, useEffect, useState } from "react";
 import "./App.css"
@@ -77,13 +76,13 @@ function App() {
   // *** theme end ***
   return (
     <ThemeContext.Provider  value={{ theme, toggleTheme }}>    
-    <div id={theme}>
+    <div  id={theme}>
          <NavTop> </NavTop>
-         <div className="switch h-0">
+         <div className="switch flex justify-between h-0 bg">
           <label className="text-sm gFont2" > {theme === "light" ? "Light Mode" : "Dark Mode"}</label>
-          <DayNightToggle className="ml-2" size={25}  onChange={toggleTheme} checked={theme === "dark"} />
+          <DayNightToggle className="mr-2 mt-2" size={25}  onChange={toggleTheme} checked={theme === "dark"} />
         </div>
-         <NavDown> </NavDown>
+        
          <Outlet> </Outlet>
          <Footer> </Footer>
     </div>

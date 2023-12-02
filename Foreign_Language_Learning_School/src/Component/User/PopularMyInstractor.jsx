@@ -31,7 +31,11 @@ const PopularMyInstractor = () => {
 
 
   return (
-    <div className="grid lg:grid-cols-4 grid-cols-1 px-12 ">
+    <>
+    <strong className='lg:text-4xl text-2xl lg:pl-9 pl-3 text-blue-950'>Top-notch Instructors for </strong>
+    <p className='lg:text-4xl text-2xl lg:pl-9 pl-3 font-bold text-blue-950'>Your Success </p>
+
+    <div className="grid lg:grid-cols-4 grid-cols-1 lg:px-12 px-8 lg:py-10 py-6">
       {popular.map((res) => (
         <div
         className="mb-5 gFont3 w-72 bg-base-100 shadow-2xl border-2 border-gray-200 rounded-2xl ml-5 "
@@ -44,12 +48,13 @@ const PopularMyInstractor = () => {
             />
           </figure>
           <div className="p-0 pt-1 pb-1 pl-5 bg-blue-900 text-slate-300 rounded-b-2xl">
-            <h2 className="card-title">{res.name}</h2>
-            <p className="text-sm pt-2">Email: {res.email}</p>
+            <h2 className="card-title transform transition duration-300 hover:scale-105">{res.name}</h2>
+            <p className="text-sm pt-2 transform transition duration-300 hover:scale-105">Email: {res.email}</p>
           </div>
         </div>
       ))}
     </div>
+    </>
   );
 };
 

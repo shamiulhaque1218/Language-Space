@@ -1,37 +1,21 @@
-import { Link } from "react-router-dom";
+
 
 const Slider = () => {
   return (
     <div>
       <div className="carousel w-full"> 
       
-        <p data-aos="fade-zoom-in"
-     data-aos-easing="ease-in-back"
-     data-aos-delay="600"
-     data-aos-offset="0" className="absolute gFont3 text-slate-600 lg:top-80 top-52
-      lg:left-24 left-12 lg:px-14 px-8 lg:py-8 py-3
-       bg-white rounded-md lg:text-4xl text-xl" > 
-     Learn today  for a  better <br />  tomorrow
-      <br />
-      <span className=" mt-2 lg:text-lg text-base">It can change a human completely</span> 
-       <br />
-      <div className="flex gap-5 mt-3">
-         <Link to="/signup" className="lg:text-lg text-base text-white
-          bg-blue-600 px-3 py-2  rounded-md"> Join For Free</Link>
-       <Link to="/classes" className="lg:text-lg text-base text-blue-600 bg-white border-2
-        border-blue-600 px-3 py-2 rounded-md"> See Courses </Link>
-      </div>
-       </p>
+        
         <div id="item1" className="carousel-item w-full">
-          <img
-            src="https://images.pexels.com/photos/4260485/pexels-photo-4260485.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        <img
+            src="https://images.hdqwalls.com/download/cycling-to-school-vibes-qh-1440x900.jpg"
             className="lg:sliderImg h-96 w-full"
           />
         </div>
         <div id="item2" className="carousel-item w-full">
           <img
-            src="https://images.pexels.com/photos/5212695/pexels-photo-5212695.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            className="lg:sliderImg h-96 w-full "
+            src="https://images.hdqwalls.com/download/ninja-adidas-photoshoot-8e-1440x900.jpg"
+            className="lg:sliderImg h-96 w-full"
           />
         </div>
         {/* <div id="item3" className="carousel-item w-full">
@@ -42,7 +26,7 @@ const Slider = () => {
         </div> */}
         <div id="item3" className="carousel-item w-full">
           <img
-            src="https://images.pexels.com/photos/5212329/pexels-photo-5212329.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            src="https://images.hdqwalls.com/download/computer-laptop-desk-light-lamp-dark-room-fa-2560x1700.jpg"
             className="lg:sliderImg h-96 w-full "
           />
         </div>

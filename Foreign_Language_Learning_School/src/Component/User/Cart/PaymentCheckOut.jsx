@@ -109,7 +109,7 @@ const PaymentCheckOut = ({classPrice,tqData}) => {
     
     return (
        <>
-        <form className="w-2/6 m-8 ml-20" onSubmit={handleSubmit}>
+        <form className="lg:w-2/6 w-5/6 m-4 lg:m-8 lg:ml-20" onSubmit={handleSubmit}>
       <CardElement
         options={{
           style: {

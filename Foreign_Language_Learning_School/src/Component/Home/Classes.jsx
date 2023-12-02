@@ -38,7 +38,7 @@ const Classes = () => {
     <>  <div className="bdimage">
     <p className="gFont2 text-5xl pt-32  py-5 px-10">All Classes</p> 
     </div> 
-    <div className="grid lg:grid-cols-3 pb-10 grid-cols-1 gFont3 lg:px-14 px-10">
+    <div className="grid lg:grid-cols-3 pt-5 pb-10 grid-cols-1 gFont3 lg:px-24 px-10 gap-8">
       {tqData.map(result => <ViewPopularClass key={result._id} result={result} > </ViewPopularClass>
       
       )

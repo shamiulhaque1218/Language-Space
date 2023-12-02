@@ -107,7 +107,7 @@ const SignUp = () => {
             type="password"  
             name="password"
             id="password"
-            {...register("password", { required: true,minLength:6, maxLength: 8, pattern: /(?=.*[A-Z])(?=.*[!@#$&+*])(?=.*[0-9])(?=.*[a-z])/ })}
+            {...register("password", { required: true,minLength:6, maxLength: 10, pattern: /(?=.*[A-Z])(?=.*[!@#$&+*])(?=.*[0-9])(?=.*[a-z])/ })}
             className="border-gray-600 border-2 p-1 rounded-md w-full focus:outline-none focus:border-blue-500"
           />
           {errors.password?.type === 'required' && <div className="text-red-600">Password is required</div>}

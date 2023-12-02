@@ -35,13 +35,18 @@ const PopularClasses = () => {
   //console.log(tqData);
 
   return (
-    <div className="grid lg:grid-cols-3 grid-cols-1 gFont3 lg:px-14 px-10">
+    <>
+    <strong className='lg:text-4xl text-2xl lg:pl-9 pl-3 text-blue-950'>Perfect Online Course For </strong>
+    <p className='lg:text-4xl text-2xl lg:pl-9 pl-3 font-bold text-blue-950'>Your Career </p>
+    
+    <div className="grid lg:grid-cols-3 grid-cols-1 gFont3 lg:px-24 px-10 gap-8 py-8">
       {tqData.map(result => <ViewPopularClass key={result._id} result={result} > </ViewPopularClass>
       
       )
       }
 
     </div>
+    </>
   );
 };
 

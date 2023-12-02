@@ -17,8 +17,8 @@ const Footer = () => {
     <Link to="/advertisement" className="link link-hover">Advertisement</Link> 
     <Link to="/contact" className="link link-hover">Contact</Link> 
     <Link to="/address" className="link link-hover">Address</Link> <br />
-    <a className="px-4 py-1 ml-96 lg:ml-0 rounded-2xl bg-yellow-600" href="#">
-  <FontAwesomeIcon className='h-4 text-white' icon={faEject} />
+    <a className="rounded-2xl bg-yellow-600 w-10 ml-64 lg:ml-0" href="#">
+  <FontAwesomeIcon className='h-4 text-white px-3' icon={faEject} />
     </a>
     </div>
     <p className="lg:mt-20 lg:ml-14">Copyright © 2023 - All right reserved by The Language Space</p>

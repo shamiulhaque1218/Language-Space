@@ -26,7 +26,8 @@
       background-color: #07294D;
     }
     .bgFont{
-      color: #F28054;
+      color: rgb(20, 112, 218);
+      font-weight: 600;
     }
     .bdimage{
       background-image: url('https://img.freepik.com/premium-photo/side-view-laptop-pc-with-color-light-dark-technology-gaming-concept_37129-944.jpg?w=900');
@@ -49,6 +50,20 @@
       border-top-right-radius: 100px;
       border-bottom-left-radius: 100px;
     }
-    
+    .marginLeft{
+        margin-left: 50rem;
+    }
+    .height{
+     height: 780px;
+    }
+    .top{
+      top: 680px;
+    }
+    .BGColor{
+      background-color: #F3EBF6;
+    }
+    .ml_6{
+      margin-left: 800px;
+    }
      
   }

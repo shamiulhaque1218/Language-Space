@@ -86,11 +86,11 @@ const MyCart = () => {
        </div>
        <table className="table table-compact w-full">
          <thead>
-           <tr className="bg-black py-2 text-white gFont3">
-             <th className="text-center">Index</th>
-             <th className="text-center">Class Image</th>
-             <th className="text-center">Class Name</th>
-             <th className="text-center">My Email</th>
+           <tr className="bg-black py-2 text-white gFont3 grid lg:grid-cols-7 grid-cols-4">
+             <th className="justify-center hidden lg:flex">Index</th> 
+             <th className="justify-center hidden lg:flex">Class Image</th>
+             <th className="text-center ">Class Name</th>
+             <th className="justify-center hidden lg:flex">My Email</th>
              <th className="text-center">Class Price</th>
              <th className="text-center">Action</th>
              <th className="text-center">Payment</th>
@@ -99,24 +99,29 @@ const MyCart = () => {
  
          {tqData.map((data, index) => (
            <tbody key={data._id} className=" p-1">
-             <tr className="border-2">
-               <td className="p-3 text-center"> {index + 1} </td>
-               <td>
+             <tr className="border-2 grid lg:grid-cols-7 grid-cols-4">
+               <td className="justify-center hidden lg:flex"> {index + 1} </td>
+               <td className="justify-center hidden lg:flex">
                  <img
-                   className="h-12 w-12 ml-8 rounded-xl"
+                   className="h-12 w-12 rounded-xl"
                    src={data.picture}
                    alt=""
                  />
                </td>
                <td className="p-3 text-center">{data.nameOfClass} </td>
-               <td className="p-3 text-center">{data.userEmail} </td>
+               <td className="justify-center hidden lg:flex">{data.userEmail} </td>
                <td className="p-3 text-center">$ {data.classPrice} </td>
-               <td><button
+               <td className="flex justify-center">
+                <button
                  onClick={() => handelDelete(data._id)}
-                 className="btn px-3 py-3 bg-red-600 text-center">
-             <FontAwesomeIcon className='h-4 text-white' icon={faTrash} />
-               </button> </td>
-               <td><Link state={tqData} to={`/payment/${data._id}`}> <button className="btn btn-active btn-primary">Pay</button> </Link></td>
+                 className="btn lg:py-3 py-1 bg-red-600 text-center">
+                 <FontAwesomeIcon className='h-4  text-white' icon={faTrash} />
+               </button> 
+               </td>
+               <td className="text-center">
+                <Link state={tqData} to={`/payment/${data._id}`}> <button className="btn btn-active btn-primary">Pay</button>
+                 </Link>
+                 </td>
              </tr>
            </tbody>
          ))}

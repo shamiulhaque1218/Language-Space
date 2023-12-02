@@ -35,7 +35,7 @@ const PopularInstractor = () => {
     <div className="bdimage">
           <p className="gFont2 text-5xl pt-32  py-5 px-10">All Instructor || {popular.length} </p> 
           </div>
-    <div className="grid lg:grid-cols-4 grid-cols-1 px-12 ">
+    <div className="grid lg:grid-cols-4  grid-cols-1 lg:px-12 px-8 pt-2 ">
       {popular.map((res) => (
         <div
         className="mb-5 gFont3 w-72 bg-base-100 shadow-2xl border-2 border-gray-200 rounded-2xl ml-5 "
