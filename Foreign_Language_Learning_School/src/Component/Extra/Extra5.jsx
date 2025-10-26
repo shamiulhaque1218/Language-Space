@@ -3,7 +3,7 @@ import { MdOutlineDateRange } from "react-icons/md";
 
 const Extra5 = () => {
     return (
-        <div className="lg:pt-20 pt-8 pb-5"> 
+        <div className="lg:pt-20 pt-8 pb-5 max-w-[1300px] mx-auto"> 
         <strong className="text-blue-950 font-semibold lg:text-4xl text-2xl lg:px-10 px-3">Our Blog & Article</strong>
 
         <container className="grid lg:grid-cols-3 grid-cols-1 lg:px-10 px-3 gap-5">

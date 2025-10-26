@@ -6,7 +6,7 @@ import CountUp from 'react-countup';
 
 const Extra3 = () => {
     return (
-        <container className="gFont3 grid lg:grid-cols-4 grid-cols-2 lg:mx-16 mx-3 lg:pb-20 pb-10 gap-8 lg:gap-2"> 
+        <container className="max-w-[1300px] mx-auto gFont3 grid lg:grid-cols-4 grid-cols-2  lg:pb-20 pb-10 gap-8 lg:gap-2"> 
            <div className="flex gap-2">
            <FaAward className="text-blue-950 lg:text-5xl text-4xl" />
            <strong>

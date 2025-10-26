@@ -1,7 +1,7 @@
 import { FaHandPointRight } from "react-icons/fa";
 const Extra2 = () => {
     return (
-        <div className="grid lg:grid-cols-2 grid-cols-1 mr-12 pt-10 lg:pt-12">
+        <div className="max-w-[1300px] mx-auto grid lg:grid-cols-2 grid-cols-1 justify-center pt-10 lg:pt-12">
             <div className="lg:ml-16 ml-3">
             <img className="h-96 w-96 rounded-xl" src="education3.png" alt="baby" />
           <img className="h-48 w-60 rounded-lg relative top-[-7rem] lg:left-64 left-36 sm:left-32" src="/education.png" alt="image" />

@@ -9,7 +9,7 @@ const ClassAndInstructor = () => {
     return (
         <div>
   <Tabs>
-      <strong className='flex'>
+      <strong className='flex max-w-[1000px] mx-auto'>
       <p className='bg-blue-200 text-blue-700 w-32 py-1 ml-3 text-center rounded-3xl text-md font-semibold mb-5 lg:mb-0'>Course List</p>
       <p className='bg-blue-200 text-blue-700 w-32 py-1 ml-3 text-center rounded-3xl text-md font-semibold mb-5 lg:mb-0'>Instructor List</p>
       </strong>
@@ -20,10 +20,10 @@ const ClassAndInstructor = () => {
     </TabList>
 
     <TabPanel>
-    <div className='pt-5'> <PopularClasses> </PopularClasses> </div>
+    <div className='pt-5 max-w-[1300px] mx-auto'> <PopularClasses> </PopularClasses> </div>
     </TabPanel>
     <TabPanel>
-     <div className='pt-5'> <PopularMyInstractor> </PopularMyInstractor> </div>
+     <div className='pt-5 max-w-[1300px] mx-auto'> <PopularMyInstractor> </PopularMyInstractor> </div>
     </TabPanel>
   </Tabs>
         </div>

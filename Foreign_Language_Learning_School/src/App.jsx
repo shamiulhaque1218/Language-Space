@@ -76,7 +76,7 @@ function App() {
   // *** theme end ***
   return (
     <ThemeContext.Provider  value={{ theme, toggleTheme }}>    
-    <div  id={theme}>
+    <div className=""  id={theme}>
          <NavTop> </NavTop>
          <div className="switch flex justify-between h-0 bg">
           <label className="text-sm gFont2" > {theme === "light" ? "Light Mode" : "Dark Mode"}</label>

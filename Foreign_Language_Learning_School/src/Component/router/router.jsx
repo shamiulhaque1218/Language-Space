@@ -8,7 +8,7 @@ import Advertisement from "../Footer/Advertisement";
 import Cookie from "../Footer/Cookie";
 import Address from "../Footer/Address";
 import Contact from "../Footer/Contact";
-import AddClass from "../Classes/addClass";
+import AddClass from "../Classes/AddClass";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import UpdateClass from "../Classes/UpdateClass";
 import ViewClass from "../Classes/ViewClass";

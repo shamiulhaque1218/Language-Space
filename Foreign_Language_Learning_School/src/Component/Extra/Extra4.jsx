@@ -2,7 +2,7 @@
 
 const Extra4 = () => { 
   return (
-    <div className="grid lg:grid-cols-2 grid-cols-1 lg:px-20 px-5 lg:pt-10 pt-8 text-blue-950 bg-blue-200 rounded-t-xl">
+    <div className="max-w-[1300px] mx-auto grid lg:grid-cols-2 grid-cols-1 lg:px-20 px-5 lg:pt-10 pt-8 text-blue-950 bg-blue-200 rounded-t-xl">
       <div className="pb-8 lg:pb-0">
         <p className="pb-1 font-semibold text-3xl">To become an instructor </p>
         <p className="pb-3 text-red-600 font-medium">Email: admin@gmail.com </p>
