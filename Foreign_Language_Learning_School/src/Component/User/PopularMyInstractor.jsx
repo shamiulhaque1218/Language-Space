@@ -1,61 +1,68 @@
-
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import ContentLoader from "react-content-loader";
 
-const PopularMyInstractor = () => {
-  const { loader} = useContext(AuthContext);
-  const [popular,setPopular] = useState([])
-  
-  useEffect( () => {
+const PopularMyInstructor = () => {
+  const { loader } = useContext(AuthContext);
+  const [popular, setPopular] = useState([]);
 
+  useEffect(() => {
     fetch(`https://foreign-language-learning-school-server-six.vercel.app/user/instractor/Instructor`)
-    .then((res) => res.json())
-    .then(data => {
-      setPopular(data)
-    })
+      .then((res) => res.json())
+      .then((data) => setPopular(data));
+  }, []);
 
-   } ,[])
-   console.log(popular);
   if (loader)
     return (
-      <>
-        <ContentLoader viewBox="0 0 380 70">
-          {/* Only SVG shapes */}
-          <rect x="0" y="0" rx="5" ry="5" width="70" height="70" />
-          <rect x="80" y="17" rx="4" ry="4" width="300" height="13" />
-          <rect x="80" y="40" rx="3" ry="3" width="250" height="10" />
-        </ContentLoader>{" "}
-      </>
+      <ContentLoader viewBox="0 0 380 70">
+        <rect x="0" y="0" rx="5" ry="5" width="70" height="70" />
+        <rect x="80" y="17" rx="4" ry="4" width="300" height="13" />
+        <rect x="80" y="40" rx="3" ry="3" width="250" height="10" />
+      </ContentLoader>
     );
 
-
   return (
-    <>
-    <strong className='lg:text-4xl text-2xl lg:pl-9 pl-3 text-blue-950'>Top-notch Instructors for </strong>
-    <p className='lg:text-4xl text-2xl lg:pl-9 pl-3 font-bold text-blue-950'>Your Success </p>
+    <section className="lg:px-12 px-6 lg:py-12 py-8">
+      {/* Header */}
+      <div className="text-center mb-10">
+        <h2 className="lg:text-4xl text-3xl font-bold text-blue-900">
+          Top-notch Instructors for
+        </h2>
+        <p className="lg:text-4xl text-3xl font-extrabold text-blue-950 mt-2">
+          Your Success
+        </p>
+      </div>
 
-    <div className="grid lg:grid-cols-4 grid-cols-1 lg:px-12 px-8 lg:py-10 py-6">
-      {popular.map((res) => (
-        <div
-        className="mb-5 gFont3 w-72 bg-base-100 shadow-2xl border-2 border-gray-200 rounded-2xl ml-5 "
-          key={res._id} >
-          <figure>
-            <img
-              src={res.photoURL}
-              alt="user"
-              className="h-72 w-full rounded-t-2xl"
-            />
-          </figure>
-          <div className="p-0 pt-1 pb-1 pl-5 bg-blue-900 text-slate-300 rounded-b-2xl">
-            <h2 className="card-title transform transition duration-300 hover:scale-105">{res.name}</h2>
-            <p className="text-sm pt-2 transform transition duration-300 hover:scale-105">Email: {res.email}</p>
+      {/* Instructor Grid */}
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8">
+        {popular.map((res) => (
+          <div
+            key={res._id}
+            className="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
+          >
+            {/* Instructor Image */}
+            <div className="relative h-72 w-full">
+              <img
+                src={res.photoURL || "/no-image.png"}
+                alt={res.name}
+                className="h-full w-full object-cover rounded-t-lg"
+              />
+            </div>
+
+            {/* Instructor Info */}
+            <div className="p-5 bg-blue-900 text-slate-200">
+              <h3 className="text-xl font-semibold mb-1 hover:text-white transition duration-300">
+                {res.name}
+              </h3>
+              <p className="text-sm hover:text-gray-100 transition duration-300">
+                Email: {res.email}
+              </p>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
-    </>
+        ))}
+      </div>
+    </section>
   );
 };
 
-export default PopularMyInstractor;
+export default PopularMyInstructor;
