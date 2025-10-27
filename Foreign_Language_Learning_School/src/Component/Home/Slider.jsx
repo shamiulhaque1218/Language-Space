@@ -8,7 +8,7 @@ const Slider = () => {
         
         <div id="item1" className="carousel-item w-full">
         <img
-            src="https://images.hdqwalls.com/download/cycling-to-school-vibes-qh-1440x900.jpg"
+            src="https://i.ibb.co.com/j90Yj24T/Chat-GPT-Image-Oct-27-2025-12-10-44-PM.png"
             className="lg:sliderImg h-96 w-full"
           />
         </div>
